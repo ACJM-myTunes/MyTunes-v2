@@ -12,7 +12,7 @@
           <div>
             <ReviewComponent/>
             <div class = "popup">
-            <ReviewPopUp></ReviewPopUp>
+            {/* <ReviewPopUp></ReviewPopUp> */}
             </div>
           </div>
           </div>
