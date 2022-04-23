@@ -10,6 +10,7 @@
  */
 
  import React, {Component} from "react";
+ import UserSearch from "../components/UserSearch";
 
 class MainContainer extends Component {
     constructor(props) {
@@ -18,7 +19,8 @@ class MainContainer extends Component {
     render() {
         return(
           <div>
-              <h1> MyTunes </h1>
+            <h1> MyTunes </h1>
+            <UserSearch />
           </div>
         );
       }
