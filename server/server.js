@@ -4,10 +4,10 @@ const app = express();
 const port = 3000;
 
 // Sqlite database setup
-const sqlite3 = require('sqlite3').verbose();
+//const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
 const server = http.createServer(app);
-const db = new sqlite3.Database('./db/MyTunes.db');
+//const db = new sqlite3.Database('./db/MyTunes.db');
 
 // let runScript;
 // runScript = `CREATE TABLE IF NOT EXISTS Users (
