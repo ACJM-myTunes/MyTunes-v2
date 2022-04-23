@@ -14,11 +14,6 @@
  import MainContainer from '/client/containers/MainContainer.js'
 
  class App extends Component {
-   constructor(props) {
-     super(props);
-     
-   }
- 
    render() {
      return(
        <div>
