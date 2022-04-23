@@ -10,15 +10,15 @@
  */
 
  import React, {Component} from "react";
-
-class MainContainer extends Component {
+ import ReviewComponent from '/client/components/ReviewComponent.js'
+ class MainContainer extends Component {
     constructor(props) {
         super(props);
     }
     render() {
         return(
           <div>
-              <h1> MyTunes </h1>
+            <ReviewComponent/>
           </div>
         );
       }

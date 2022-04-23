@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .circle{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 50%;
+    position: relative;
+  
+  }
+  .circle::after{
+    content: '';
+    background-color: grey;
+    width: 120px;
+    height: 120px;
+    position:absolute;
+    z-index: -1;
+    border-radius:50%;
+    top: -10px;
+    left:-10px;
+  }
+  .circle::before{
+    content: '';
+    background-color: black;
+    width: 300px;
+    height: 300px;
+    position:absolute;
+    z-index: -1;
+    border-radius:50%;
+    top: -100px;
+    left:-100px;
+  
+  }
+.vinylcover {
+    background-color: burlywood;
+    width: 350px;
+    height: 350px;
+    position:absolute;
+    left: 230px;
+
+}
