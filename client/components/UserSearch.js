@@ -9,7 +9,7 @@ const UserSearch = (props) => {
     return(
         <form action="/" method="get" /*onClick={onClick}*/>
             <input type="text" placeholder="Enter a user name"/>
-            <button type="submit">Search</button>
+            <button id="userSearchButton" type="submit">Search</button>
         </form>
     );
 };
