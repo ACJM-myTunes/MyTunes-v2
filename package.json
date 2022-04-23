@@ -1,0 +1,64 @@
+{
+  "name": "mytunes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production nodemon server/server.js",
+    "build": "NODE_ENV=production webpack",
+    "dev": "concurrently \"cross-env NODE_ENV=development nodemon server/server.js\" \"cross-env NODE_ENV=development webpack serve --open\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CASM-Codesmith/MyTunes.git"
+  },
+  "keywords": [],
+  "author": "Cody Schexnider, Adam Lang, Simon Lee, Michael Watson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CASM-Codesmith/MyTunes/issues"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public",
+      "client"
+    ]
+  },
+  "homepage": "https://github.com/AdamLang96/MyTunes#readme",
+  "dependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.4",
+    "concurrently": "^6.0.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "express": "^4.12.3",
+    "node-fetch": "^2.3.0",
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.6.3",
+    "react-redux": "^7.2.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.5",
+    "sass": "^1.50.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-hot-middleware": "^2.24.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.4",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack-dev-server": "^4.8.1"
+  }
+}
