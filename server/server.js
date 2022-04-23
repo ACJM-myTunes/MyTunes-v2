@@ -3,16 +3,30 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-// Sqlite database setup
-const sqlite3 = require('sqlite3').verbose();
-const http = require('http');
-const server = http.createServer(app);
-const db = new sqlite3.Database('./db/myTunes.db');
-
-const searchRouter = require('./routes/searchRouter');
+// import routers
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// handle requests for static files
+app.use(express.static(path.resolve(__dirname, '../client')));
+
+// server routing
+
+// catch-all route handler for any requests to an unknown route
+app.use((req, res) => res.status(404).send('Sorry, this page does not exist.'));
+
+//global eror handler
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
+});
 
 app.use('/search', searchRouter);
 
