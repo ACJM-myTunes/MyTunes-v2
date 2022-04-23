@@ -16,7 +16,9 @@ module.exports = {
         port: 8080,
         compress: true,
         proxy: { //changes domain request comes from
+            
             '/': 'http://localhost:3000'
+
         }
      },
     plugins: [new HtmlWebpackPlugin({ template: './client/index.html', title: 'development'})],
