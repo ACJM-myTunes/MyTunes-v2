@@ -5,6 +5,7 @@ const port = 3000;
 
 // import routers
 const searchRouter = require('./routes/searchRouter');
+const userRouter = require('./routes/userRouter');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,6 +15,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 
 // server routing
 app.use('/search', searchRouter);
+app.use('/user', userRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('Sorry, this page does not exist.'));
@@ -29,8 +31,6 @@ app.use((err, req, res, next) => {
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
-
-app.use('/search', searchRouter);
 
 app.listen(port, () => {
   console.log(`Server running ${port}`);
