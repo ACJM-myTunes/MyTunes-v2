@@ -1,10 +1,10 @@
 const query = require('./query');
 
 
-function parseQueryAndReturn(operation, table, paramsObj) {
+function parseQueryAndReturn(operation, tableName, paramsObj) {
   let stmt = '';
   const resultsObj = {};
-  stmtSlice = () => stmt = stmt.slice(0, -2);
+  stmtSlice2 = () => stmt = stmt.slice(0, -2);
 
 
   // for insert, params should be an object like: 
@@ -14,14 +14,15 @@ function parseQueryAndReturn(operation, table, paramsObj) {
   //   }
   insertQuery = () => {
     const valsArray = Object.values(paramsObj);
-    stmt += `INSERT INTO ${table} (`;
+    stmt += `INSERT INTO ${tableName} (`;
     for (const colName of Object.keys(paramsObj)) stmt += `${colName}, `;
-    stmtSlice();
+    stmtSlice2();
     stmt += ') VALUES (';
     for (const val of valsArray) stmt += '?, ';
-    stmtSlice();
+    stmtSlice2();
     stmt += ');';
-
+    
+    console.log(stmt)
     return query(stmt, valsArray);
   };
   
@@ -30,6 +31,8 @@ function parseQueryAndReturn(operation, table, paramsObj) {
   selectQuery = () => {
 
   }
+
+  if (operation === 'INSERT' || operation === 'insert') insertQuery();
 
 
 
