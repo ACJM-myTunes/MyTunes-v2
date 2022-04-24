@@ -4,37 +4,41 @@
 import * as types from '/client/constants/actionTypes.js';
 
 const initialState = {
-queriedReviews : [{song: 'filler1', artist: 
-"filler2", album: "filler3", genre: "filler4",
-RID: 0,
-showDetails: false,
-buttonText:  "Check the Review"
-}, 
+queriedReviews : [],
+reviewID : 0
+    
+//     {
+//     song: 'filler1', artist: 
+// "filler2", album: "filler3", genre: "filler4",
+// RID: 0,
+// showDetails: false,
+// buttonText:  "Check the Review"
+// }, 
 
-{song: 'filler1', artist: 
-"filler2", album: "filler3", genre: "filler4",
-RID: 1,
-showDetails: false,
-buttonText:  "Check the Review"
-},
+// {song: 'filler1', artist: 
+// "filler2", album: "filler3", genre: "filler4",
+// RID: 1,
+// showDetails: false,
+// buttonText:  "Check the Review"
+// },
 
-{song: 'filler1', artist: 
-"filler2", album: "filler3", genre: "filler4",
-RID: 3,
-showDetails: false,
-buttonText:  "Check the Review"
-},
+// {song: 'filler1', artist: 
+// "filler2", album: "filler3", genre: "filler4",
+// RID: 3,
+// showDetails: false,
+// buttonText:  "Check the Review"
+// },
 
-{song: 'filler1', artist: 
-"filler2", album: "filler3", genre: "filler4",
-RID: 4,
-showDetails: false,
-buttonText:  "Check the Review"
-}
+// {song: 'filler1', artist: 
+// "filler2", album: "filler3", genre: "filler4",
+// RID: 4,
+// showDetails: false,
+// buttonText:  "Check the Review"
+// }
 
 
-],
-reviewID : 0                      
+
+                    
 };
 
 const  reviewReducer = (state = initialState, action) => {
