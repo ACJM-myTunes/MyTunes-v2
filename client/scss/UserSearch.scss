@@ -1,7 +1,7 @@
 input {
      width: 200px;
      background-color: white;
-     border: thin solid blue;
+     border: thin solid #4fa4ff;
      border-radius: 4px;
      display: inline-block;
      font: inherit;
@@ -17,11 +17,14 @@ input:hover {
 input:focus {
     outline: none;
 }
-button {
+#userSearchButton {
     border: 1px solid transparent;
     padding: 12px 18px;
-    background-color: #979797;
+    background-color: #cee6ff;
     border-radius: 5px;
+    color: #3e3e3e;
+    font-weight: 400;
+    font-size: 15px;
 }
 #userSearchButton:hover {
     border: 1px solid rgb(56, 56, 56);
