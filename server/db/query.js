@@ -1,9 +1,11 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const db = new sqlite3(path.resolve('../myTunes.db'), { fileMustExist: true });
+const db = new sqlite3.Database(path.resolve('../myTunes.db'), { fileMustExist: true });
 
 // function for querying database with passed in parameters;
-function query(sqlStatement, params) {
+
+// params should be an arr of values corresponding with order of values in input statement
+function query(sqlStatement, paramsArr) {
   let dataObj;
   const statement = db.prepare(sqlStatement);
 
@@ -28,6 +30,5 @@ function query(sqlStatement, params) {
   return dataObj;
 }
 
-module.exports = {
-  query
-}
+
+module.exports = query;
