@@ -71,6 +71,24 @@ const userController = {
     return next();
   },
 
+  updateUser: (req, res, next) => {
+    // username to be updated with be in the request parameters
+    const username = req.params.username;
+
+    // information to update included in the request body
+    const newUserInfo = req.body;
+
+    // query DB to update the user (by their ID)
+    const updatedUser = parseQueryAndReturn('UPDATE', 'users', {
+      ...newUserInfo,
+    });
+
+    // store updated user in res.locals to send back to client
+    res.locals.updatedUser = updatedUser;
+
+    return next();
+  },
+
   loadUserDashboard: (req, res, next) => {
     // get the current user from res.locals.user
     const user = res.locals.user;

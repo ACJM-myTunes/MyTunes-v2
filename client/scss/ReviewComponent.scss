@@ -1,49 +1,56 @@
 
-  .circle{
-    width: 100px;
-    height: 100px;
-    background-color: black;
-    border-radius: 50%;
-    position: relative;
-  
-  }
-  
-  .circle::after{
-    content: '';
-    background-color: grey;
-    width: 120px;
-    height: 120px;
-    position:absolute;
-    z-index: -1;
-    border-radius:50%;
-    top: -10px;
-    left:-10px;
-  
-  }
-  
-  .circle::before{
-    content: '';
-    background-color: black;
-    width: 300px;
-    height: 300px;
-    position:absolute;
-    z-index: -1;
-    border-radius:50%;
-    top: -100px;
-    left:-100px;
-  
-  }
+.circle{
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  border-radius: 50%;
+  position: relative;
+  left: 0px;
+  top: 0px
+}
+
+.circle::after{
+  content: '';
+  background-color: grey;
+  width: 60px;
+  height: 60px;
+  position:absolute;
+  z-index: -1;
+  border-radius:50%;
+  top: -5px;
+  left:-5px;
+
+}
+
+.circle::before{
+  content: '';
+  background-color: black;
+  width: 150px;
+  height: 150px;
+  position:absolute;
+  z-index: -1;
+  border-radius:50%;
+  top: -50px;
+  left:-50px;
+
+}
   
 .vinylcover {
-    background-color: burlywood;
-    width: 350px;
-    height: 350px;
+  background-image: linear-gradient(to right, rgb(193, 154, 107), rgb(184, 115, 51));
+   width: 200px;
+    height: 200px;
     position:relative;
     left: 40px;
+    border: solid;
+    border-width: 1px;
+    border-color:  rgb(182, 133, 69);
+    border-radius: 1px;
+    box-shadow: 2px 2px 1px black;
+
 }
 
 .vinylcoverText {
-  font-size: 1.5rem;
+  font-size: 1em;
   color: black;
   font-family: Helvetica, Arial, sans-serif;
   padding-left: 20px;
@@ -52,17 +59,18 @@
 }
 
 .vinylcoverButton {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: rgb(32, 30, 27);
   font-family: Helvetica, Arial, sans-serif;
   border-radius: 15px;
   height: 35px;
-  width: 275px;
+  width: 150px;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
-  left: 35px;
-  top: 70px;
+  left: 22px;
+  top: -8px;
   background-color: lightblue;
 }
 

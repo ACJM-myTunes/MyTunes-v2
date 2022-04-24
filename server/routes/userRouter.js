@@ -25,16 +25,21 @@ userRouter.post(
 /**
  * UPDATE a user
  */
-userRouter.post('/:username', userController.updateUser, (req, res) => {
-  return res.status(200).json(res.locals.updatedUser);
-});
+userRouter.post(
+  '/:username',
+  userController.verifyUser,
+  userController.updateUser,
+  (req, res) => {
+    return res.status(200).json(res.locals.updatedUser);
+  }
+);
 
 /**
  * Load a user dashboard (READ)
  */
 userRouter.get('/:username', userController.loadUserDashboard, (req, res) => {
   // serve up the user dashboard
-  return res.status(200).json(res.locals.userDashboard);
+  return res.status(200).json(res.locals.userTracks);
 });
 
 module.exports = userRouter;
