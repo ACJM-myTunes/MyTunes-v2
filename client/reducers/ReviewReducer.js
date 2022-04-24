@@ -1,8 +1,40 @@
+
+ 
+
 import * as types from '/client/constants/actionTypes.js';
 
 const initialState = {
-queriedReviews : [],
-reviewID : 0                       
+queriedReviews : [{song: 'filler1', artist: 
+"filler2", album: "filler3", genre: "filler4",
+RID: 0,
+showDetails: false,
+buttonText:  "Check the Review"
+}, 
+
+{song: 'filler1', artist: 
+"filler2", album: "filler3", genre: "filler4",
+RID: 1,
+showDetails: false,
+buttonText:  "Check the Review"
+},
+
+{song: 'filler1', artist: 
+"filler2", album: "filler3", genre: "filler4",
+RID: 3,
+showDetails: false,
+buttonText:  "Check the Review"
+},
+
+{song: 'filler1', artist: 
+"filler2", album: "filler3", genre: "filler4",
+RID: 4,
+showDetails: false,
+buttonText:  "Check the Review"
+}
+
+
+],
+reviewID : 0                      
 };
 
 const  reviewReducer = (state = initialState, action) => {
@@ -29,6 +61,9 @@ const  reviewReducer = (state = initialState, action) => {
              if(!newList[i].showDetails) {
                 newList[i].showDetails = true
                 newList[i].buttonText = "Hide Review"
+             } else {
+                newList[i].showDetails = false
+                newList[i].buttonText = "Check the Review!"
              }
            break;
          }

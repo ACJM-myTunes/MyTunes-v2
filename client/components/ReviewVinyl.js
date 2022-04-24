@@ -13,7 +13,7 @@ import '/client/scss/ReviewComponent.scss'
 const ReviewVinyl = (props) => {
    
    return (
-<div class = 'circle'>
+<div className = 'circle'>
 </div>
     )
    }

@@ -20,7 +20,7 @@
 });
 
 const mapDispatchToProps = dispatch => ({
- renderReview : (reviewID) => dispatch(actions.queryData(reviewID))
+ renderReview : (reviewID) => dispatch(actions.renderReview(reviewID))
 });
 
  class AllReviews extends Component {
@@ -39,10 +39,7 @@ const mapDispatchToProps = dispatch => ({
   }
         return(
           <div className = "container">
-              <ReviewContainer></ReviewContainer>
-              <ReviewContainer></ReviewContainer>
-              <ReviewContainer></ReviewContainer>
-              <ReviewContainer></ReviewContainer>
+              {arrayDiv}
           </div>
         );
       }
