@@ -1,4 +1,5 @@
-// const db = require('../db/myTunes.db');
+const query = require('../db/query');
+const parseQueryAndReturn = require('../db/parseQueryAndReturn');
 
 const searchController = {
   getMenuSelection: (req, res, next) => {
@@ -41,6 +42,22 @@ const searchController = {
     //     message: { err }
     //   })
     // })
+  },
+
+  getTrackReviews: (req, res, next) => {
+    // track name is in request parameters
+    const trackName = req.params.trackName;
+
+    // query database to find the track
+    const track = parseQueryAndReturn('SELECT', 'tracks', { name: trackName });
+
+    // query database for all reviews keyed to trackID
+    const trackReviews = parseQueryAndReturn('SELECT', 'reviews', {
+      _id: track._id,
+    });
+
+    // store track reviews in res.locals to send to client
+    res.locals.trackReviews = trackReviews;
   },
 };
 
