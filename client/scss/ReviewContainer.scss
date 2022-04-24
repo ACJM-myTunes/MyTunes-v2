@@ -1,18 +1,20 @@
 
   .container {
-    display: flex;
-    justify-content: space-around;
+   height: 250px;
+   width:  320px;
+   position: relative
   }
   
   
   .vinyl {
-    position: relative;
+    position: absolute;
+    top: 70px;
+    left: 250px;
+  }
+
+  .cover {
+    position: absolute;
     top: 0px;
     left: 0px;
   }
 
-  .popup {
-    position: relative;
-    top: -20px;
-    left: 400px;
-  }
