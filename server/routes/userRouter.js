@@ -2,15 +2,39 @@ const express = require('express');
 const userController = require('../controllers/userController');
 const userRouter = express.Router();
 
-// create a new user
-userRouter.post('/', userController.createUser, (req, res) => {});
+/**
+ * CREATE a new user
+ */
+userRouter.post('/signup', userController.createUser, (req, res) => {
+  // return/serve the created user object to the client
+  return res.status(200).json(res.locals.newUser);
+});
 
-// loading a user by their username
-userRouter.get('/:username', (req, res) => {
+/**
+ * Login (READ)
+ */
+userRouter.post(
+  '/login',
+  userController.verifyUser,
+  userController.loadUserDashboard,
+  (req, res) => {
+    return res.status(200).json(res.locals.userTracks);
+  }
+);
+
+/**
+ * UPDATE a user
+ */
+userRouter.post('/:username', userController.updateUser, (req, res) => {
+  return res.status(200).json(res.locals.updatedUser);
+});
+
+/**
+ * Load a user dashboard (READ)
+ */
+userRouter.get('/:username', userController.loadUserDashboard, (req, res) => {
   // serve up the user dashboard
   return res.status(200).json(res.locals.userDashboard);
 });
-
-// verify/validate user
 
 module.exports = userRouter;
