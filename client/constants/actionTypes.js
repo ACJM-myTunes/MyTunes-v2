@@ -13,4 +13,7 @@
 // add action type constants i.e.:
 export const QUERYDATA = "QUERYDATA";
 export const SHOWREVIEWDETAILS = "SHOWREVIEWDETAILS";
+export const QUERYUSER = "QUERYUSER";
+export const POSTREVIEW = "POSTREVIEW";
+export const SHOWREVIEWFORM = "SHOWREVIEWFORM";
 
