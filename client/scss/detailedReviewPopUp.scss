@@ -26,11 +26,13 @@
 
 
   .talkbubbleText {
-   font-size: 1.5rem;
+    font-size: 1.5rem;
     color: black;
     font-family: Helvetica, Arial, sans-serif;
     padding-left: 20px;
     padding-top: 5px; 
+    display: flex;
+    align-items: center
   }
 
 

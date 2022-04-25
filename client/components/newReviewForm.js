@@ -19,7 +19,7 @@ const newReviewForm = (props) => {
         postParams['rating'] = e.target.value
     }
     const handleReviewBodyChange = (e) => {
-        postParams['rating'] = e.target.value
+        postParams['review'] = e.target.value
     }
     const handleClick = () => {
         props.postReview(postParams, props.user)

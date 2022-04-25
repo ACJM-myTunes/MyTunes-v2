@@ -1,7 +1,7 @@
 import React from 'react';
 import '../scss/usersDashboard.scss';
 
-const UsersDashboard = (props) => {
+const usersDashboard = (props) => {
     const uploadedImage = React.useRef(null);
     const imageUploader = React.useRef(null);
   
@@ -29,5 +29,5 @@ const UsersDashboard = (props) => {
     );
 }
 
-export default UsersDashboard;
+export default usersDashboard;
   
