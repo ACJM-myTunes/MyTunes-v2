@@ -25,12 +25,13 @@ export const queryData = queryResults => ({
   export const queryReviewsActionDispatch = params => {
     return dispatch => {
         
-        function fetchReviews(params) { 
-          const fetchURL = `/search/${params.selectedValue}/:${params.queryValue}`
-          //  const result = await fetch(fetchURL)
-          //  const data = result.json()   
-          //  dispatch(queryData(data))
-          dispatch(queryData([{ song: 'filler1', artist: "filler2", album: "filler3", genre: "filler4", RID: 0, showDetails: false, buttonText:  "Check the Review"}]))
+        async function fetchReviews(params) { 
+          const fetchURL = `/search/testUser1${"&"}${params.selectedValue}${"&"}${params.queryValue}`;
+          console.log("url", fetchURL);
+           const result = await fetch(fetchURL)
+           const data =  await result.json()
+           console.log("actions data ", data)
+           dispatch(queryData([data]))
         }
        fetchReviews(params)
     }   
@@ -47,9 +48,8 @@ export const queryData = queryResults => ({
         async function fetchUsers(params) { 
           const fetchURL = `/user/${params.username}`
            const result = await fetch(fetchURL)
-           const data = result.json()   
+           const data = result.json()
            dispatch(queryData(data))
-        // dispatch(queryUser({ username: 'sampleUsername', reviews: [{ song: 'sampleSong', artist: 'sampleArtist', genre: "sampleGenre", RID: 0, showDetails: false }]}))
         }
        fetchUsers(params)
     }   
@@ -62,19 +62,22 @@ export const queryData = queryResults => ({
     payload: postedReviewResults
   });
 
-  export const postReviewActionDispatch = (params, user) => {
-    return dispatch => {
-        async function postReview(params, user) { 
+  // export const postReviewActionDispatch = (params, user) => {
+    // return dispatch => {
+         export async function postReviewFunction(params, user) { 
           const fetchURL = `/user/addTrack/${user}`
            const result = await fetch(fetchURL, {
                  method: 'POST', //
                  headers: { 'Content-Type' : 'application/json'},
                  body: JSON.stringify(params)
           });
+          //console.log(result);
+
         }
-       postReview(params, user)
-    }   
-  }
+  //       }
+  //      postReview(params, user)
+  //   }   
+  // }
 
 export const showReviewForm = () => ({
   type: types.SHOWREVIEWFORM

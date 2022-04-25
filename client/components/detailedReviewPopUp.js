@@ -6,7 +6,7 @@ const ReviewPopUp = (props) => {
    return (
 
   <div className = "talkbubble">
-    <p className = "talkbubbleText">{"Filler Review"}</p>
+    <p className = "talkbubbleText">{props.review}</p>
    </div>
 
 

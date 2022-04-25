@@ -1,0 +1,48 @@
+nav {
+    background-color: #C4B4AB;
+    height: 70px;
+    width: 100vw;
+    padding: 15px 8px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    //position: relative;
+}
+#list2 {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    align-items: right;
+    // position: absolute;
+    // right: 100px;
+}
+p {
+    list-style: none;
+    // position: absolute;
+    // left: 300px;
+    // translate: -300px;
+    //font-size: 30px;
+    //font-weight: 900;
+}
+li {
+    text-align: center;
+    padding: 14px 12px;
+}
+a {
+    text-decoration: none;
+}
+// #all-reviews {
+//     z-index: 0;
+// }
+#main {
+    box-shadow: 0 2px 6px 1px #b6aeae;
+    background-color: #CEE5F2;
+    height: 1400px;
+    width: 101vw;
+    padding-top: 5px;
+}
+
+#showReviews {
+    position: relative;
+    z-index:1;
+}

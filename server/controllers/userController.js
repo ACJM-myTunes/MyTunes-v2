@@ -92,16 +92,19 @@ const userController = {
   loadUserDashboard: (req, res, next) => {
     // get the current user from res.locals.user
     const username = req.params.username;
-    console.log('get request received for', username)
+    console.log('get request received for', username);
 
     // query the database to get the user's tracklist
     const userTracks = parseQueryAndReturn('SELECT', 'userTracks', {
-      username: username,
+      username,
     });
+    console.log('loaded userTracks:', userTracks);
 
     // store the tracklist in res.locals
     res.locals.userTracks = userTracks;
-    return next();
+    return next({
+      log: 'error in userController.loadUserDashboard',
+    });
   },
 
   addTrack: (req, res, next) => {
@@ -114,11 +117,11 @@ const userController = {
       artist,
       genre,
       rating,
-      review
-    })
+      review,
+    });
     res.locals.newTrack = newTrack;
     return next();
-  }
+  },
 };
 
 module.exports = userController;

@@ -1,41 +1,30 @@
 const query = require('../db/query');
 const parseQueryAndReturn = require('../db/parseQueryAndReturn');
 function setTableName(menuSelection) {
-  return menuSelection === 'ratings' ? 'reviews' : menuSelection
+  return menuSelection === 'ratings' ? 'reviews' : menuSelection;
 }
 
 const searchController = {
-  getMenuSelection: (req, res, next) => {
-    // get relative url
-    const relativeURL = req.url; // "search/<menuSelection>/:queryField"
-
-    // get indices of the slashes
-    // const secondSlashIndex = relativeURL.slice(1).indexOf('/');
-
-    // // slice/splice out the characters between the slashes as a string,
-    // const menuSelection = relativeURL.slice(1, secondSlashIndex + 1);
-    const menuSelection = req.params.menuSelection;
-    const userName = req.params.userName;
-    console.log(menuSelection, userName);
-    // save the menu selection into res.locals
-    res.locals.menuSelection = menuSelection;
-    res.locals.userName = userName;
+  getUser: (req, res, next) => {
+    const user = parseQueryAndReturn('SELECT', 'users', req.params.username);
+    res.locals.user = user;
     return next();
   },
 
   getTracks: (req, res, next) => {
-    // get the category/menuselection saved in res.locals from searchRouter
-    const menuSelection = res.locals.menuSelection;
-
     // get the queryField from the request params
-    // had to slice off a ':' from the beginning of query field
     const queryField = req.params.queryField;
+    const tableName = req.params.menuSelection;
+    const user = res.locals.user;
+    console.log('user', user);
 
     // query the database to get all the tracks that match the queryField
-    const tableName = menuSelection === 'ratings' ? 'reviews' : menuSelection;
-    const track = parseQueryAndReturn('SELECT', tableName, {name: queryField})
+    const tracks = parseQueryAndReturn('SELECT', tableName, {
+      queryField,
+    });
     //    store the tracks in the res.locals object
-    res.locals.tracks = track;
+    res.locals.tracks = tracks;
+    console.log(tracks);
     //    hand off to anonymous handler function in searchRouter
     return next();
 

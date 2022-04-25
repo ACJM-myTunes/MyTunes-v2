@@ -8,18 +8,20 @@
 
      let display
       if(props.reviewinfo.showDetails) {
-         display = [<DetailedReview></DetailedReview>]
+         display = [<DetailedReview
+          review = {props.reviewinfo.review}
+                    ></DetailedReview>]
       } else {
          display = [<div></div>]
       }
 
-
+        console.log(props.reviewinfo)
         return(          
           <div className = "container">
             
             <div className = "cover">
             <ReviewCard
-            song = {props.reviewinfo.song}
+            song = {props.reviewinfo.name}
             artist = {props.reviewinfo.artist}
             album = {props.reviewinfo.album}
             genre = {props.reviewinfo.genre}
