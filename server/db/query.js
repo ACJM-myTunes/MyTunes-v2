@@ -1,34 +1,39 @@
-const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const db = new sqlite3.Database(path.resolve('../myTunes.db'), { fileMustExist: true });
+const Database = require('better-sqlite3');
 
-// function for querying database with passed in parameters;
+let db = new Database(path.join(__dirname, './myTunes.db'));
 
-// params should be an arr of values corresponding with order of values in input statement
-function query(sqlStatement, paramsArr) {
-  let dataObj;
-  const statement = db.prepare(sqlStatement);
-
-  retrieveData = () => {
-    // add params to statement if any have been passed
-    if (params) statement.bind(params);
-    // execute search function for one finding one row
-    statement.step();
-    // return results as object
-    dataObj = statement.getAsObject();
+stmtSlice2 = () => stmt = stmt.slice(0, -2);
+let stmt = '';
+  
+insert = (tableName, paramsObj) => {
+  const valsArray = Object.values(paramsObj);
+  stmt += `INSERT INTO ${tableName} (`;
+  for (const colName of Object.keys(paramsObj)) stmt += `${colName}, `;
+  stmtSlice2();
+  stmt += ') VALUES (';
+  for (const val of valsArray) stmt += '?, ';
+  stmtSlice2();
+  stmt += ');';
+  try {
+    const statement = db.prepare(stmt);
+    const data = valsArray ? statement.run(...valsArray) : statement.run();
+    return data['lastInsertRowid'];
   }
-  retrieveData();
+  catch (err) {console.log(`Error with insert db function: ${err}`);}
+}
 
-  clearMem = () => {
-    // memory allocated for statment
-    statement.free();
-    // memory allocated for params
-    statement.freemem();
-  }
-  clearMem();
+select = (tableName, paramsObj) => {
 
-  return dataObj;
+}
+
+update = (tableName, paramsObj) => {
+  
 }
 
 
-module.exports = query;
+module.exports = query = {
+  insert,
+  select,
+  update
+}
