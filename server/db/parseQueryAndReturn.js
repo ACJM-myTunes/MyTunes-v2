@@ -1,43 +1,42 @@
 const query = require('./query');
 
 
-function parseQueryAndReturn(operation, tableName, paramsObj) {
-  let stmt = '';
-  const resultsObj = {};
-  stmtSlice2 = () => stmt = stmt.slice(0, -2);
 
-
-  // for insert, params should be an object like: 
+ // params should be an object like:
   //   {
   //     columnName1: value1,
-  //     colName2: val2,  
+  //     colName2: val2,
   //   }
+function parseQueryAndReturn(operation, tableName, paramsObj) {
+  
   insertQuery = () => {
-    const valsArray = Object.values(paramsObj);
-    stmt += `INSERT INTO ${tableName} (`;
-    for (const colName of Object.keys(paramsObj)) stmt += `${colName}, `;
-    stmtSlice2();
-    stmt += ') VALUES (';
-    for (const val of valsArray) stmt += '?, ';
-    stmtSlice2();
-    stmt += ');';
-    
-    console.log(stmt)
-    return query(stmt, valsArray);
+    switch (tableName) {
+      case 'users':
+        return query.insert(tableName, paramsObj);
+      case 'tracks':
+        // check for album, artist, genre
+        // create if necessary, otherwise make links
+    }
   };
   
-
 
   selectQuery = () => {
 
   }
 
-  if (operation === 'INSERT' || operation === 'insert') insertQuery();
 
+  updateQuery = () => {
 
+  }
 
+  switch (operation) {
+    case 'INSERT':
+      return insertQuery();
+    case 'SELECT':
+      return selectQuery();
+    case 'UPDATE':
+      return updateQuery();
+  }
 }
-console.log('hello world')
-
 
 module.exports = parseQueryAndReturn;
