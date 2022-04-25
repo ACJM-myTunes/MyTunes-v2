@@ -32,21 +32,32 @@ function parseQueryAndReturn(operation, tableName, paramsObj) {
         const review_id = query.insert('reviews', { rating, review });
 
         // get user id
-        const user_id = query.select('users', { username }).id;
+        const user_id = query.select('users', { username })._id;
 
         // create join table for user, track, and review
         query.insert('userTracks', { user_id, track_id, review_id })
-        console.log('add track made it to the end');
         break;
+      default:
+        console.log('no table name matched in insert query');
     }
   };
   
   // for select, params should be an object with one entry for conditional mapping:
   //   {
-  //     name: nameToMatch,
+  //     username: username,
   //   }
   selectQuery = () => {
-    return query.select(tableName, paramsObj);
+    if (tableName === 'userTracks') {
+      console.log(paramsObj)
+      // query user table to get user info
+      const user = query.select('users', paramsObj );
+      // then query usertracks using the userID we got above to get the rest of info
+      const userReviews = query.select(tableName, { _id: user._id });
+      //return the info which is an array of objects
+      user[tracks] = userReviews;
+      return user;
+    }
+    else return query.select(tableName, paramsObj);
   }
 
 
@@ -61,6 +72,8 @@ function parseQueryAndReturn(operation, tableName, paramsObj) {
       return selectQuery();
     case 'UPDATE':
       return updateQuery();
+    default:
+      console.log('no operation matched in parse Q and Return');
   }
 }
 
