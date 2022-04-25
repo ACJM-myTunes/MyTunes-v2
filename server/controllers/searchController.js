@@ -1,5 +1,8 @@
 const query = require('../db/query');
 const parseQueryAndReturn = require('../db/parseQueryAndReturn');
+function setTableName(menuSelection) {
+  return menuSelection === 'ratings' ? 'reviews' : menuSelection
+}
 
 const searchController = {
   getMenuSelection: (req, res, next) => {
@@ -29,9 +32,8 @@ const searchController = {
     console.log('your query field:', queryField);
 
     // query the database to get all the tracks that match the queryField
-
-    // need to check to see what menu selections are and write a function getTableName that sets appropriate table name
-    const track = parseQueryAndReturn('SELECT', getTableName(), {name: queryField})
+    const tableName = menuSelection === 'ratings' ? 'reviews' : menuSelection;
+    const track = parseQueryAndReturn('SELECT', tableName, {name: queryField})
     //    store the tracks in the res.locals object
     res.locals.tracks = track;
     //    hand off to anonymous handler function in searchRouter
@@ -53,6 +55,7 @@ const searchController = {
 
     // query database to find the track
     const track = parseQueryAndReturn('SELECT', 'tracks', { name: trackName });
+    console.log(`track being reviews: ${track}, id: ${track._id}`)
 
     // query database for all reviews keyed to trackID
     const trackReviews = parseQueryAndReturn('SELECT', 'reviews', {
