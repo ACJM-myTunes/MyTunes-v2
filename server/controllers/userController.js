@@ -91,11 +91,12 @@ const userController = {
 
   loadUserDashboard: (req, res, next) => {
     // get the current user from res.locals.user
-    const user = res.locals.user;
+    const username = req.params.username;
+    console.log('get request received for', username)
 
     // query the database to get the user's tracklist
-    const userTracks = parseQueryAndReturn('SELECT', 'user_tracks', {
-      _id: user._id,
+    const userTracks = parseQueryAndReturn('SELECT', 'userTracks', {
+      username: username,
     });
 
     // store the tracklist in res.locals
