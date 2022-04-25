@@ -4,8 +4,12 @@
 import * as types from '/client/constants/actionTypes.js';
 
 const initialState = {
-queriedReviews : [],
-reviewID : 0
+  queriedReviews : [],
+  reviewID : 0,
+  showReviewInput: false,
+  showReviewForm: false,
+  showReviewButtonText: "New Review",
+  user : "testUser1"
     
 //     {
 //     song: 'filler1', artist: 
@@ -115,5 +119,5 @@ const  reviewReducer = (state = initialState, action) => {
 }
 
 export default reviewReducer;
-
+ 
 
