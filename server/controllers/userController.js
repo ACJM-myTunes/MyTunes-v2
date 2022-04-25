@@ -73,7 +73,7 @@ const userController = {
 
   updateUser: (req, res, next) => {
     // username to be updated with be in the request parameters
-    const username = req.params.username;
+    const username = req.params.username.slice(1);
 
     // information to update included in the request body
     const newUserInfo = req.body;

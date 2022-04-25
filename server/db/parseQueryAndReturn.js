@@ -19,7 +19,7 @@ function parseQueryAndReturn(operation, tableName, paramsObj) {
   
 
   selectQuery = () => {
-
+    return query.select(tableName, paramsObj);
   }
 
 
