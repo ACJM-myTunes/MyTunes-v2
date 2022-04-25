@@ -5,8 +5,8 @@ const NewReview = (props) => {
     
     const handleClick = () => {
         props.showReviewForm()
-        console.log("clicked")
-        console.log(props)
+        // console.log("clicked")
+        // console.log(props)
     }
 
     return (

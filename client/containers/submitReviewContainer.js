@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     showReviewForm : () => dispatch(actions.showReviewForm()),
-    postReview : (params, user) => postReviewActionDispatch(params, user)
+    postReview : (params, user) => actions.postReviewFunction(params, user)
 
 });
 

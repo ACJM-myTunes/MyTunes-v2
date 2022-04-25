@@ -32,6 +32,7 @@ const mapDispatchToProps = dispatch => ({
    let review
    for(let i =0; i < this.props.reviews.length; i++) {
     review = this.props.reviews[i]
+    console.log(review)
     arrayDiv.push( <ReviewContainer
                     reviewinfo = {review}
                     renderDetails = {this.props.renderReview}

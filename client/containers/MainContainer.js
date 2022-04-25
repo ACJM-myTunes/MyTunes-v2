@@ -14,6 +14,7 @@
  import { connect } from 'react-redux';
  import * as actions from '../actions/actions.js';
  import AllReviews from '/client/containers/AllReviewsContainer.js'
+import SubmitReviewContainer from "./submitReviewContainer.js";
  
 const mapStateToProps = state => ({
     reviews : state.review.queriedReviews
@@ -36,6 +37,7 @@ class MainContainer extends Component {
              state = {this.props.reviews}
              ></SearchBar>
              <AllReviews></AllReviews>
+             <SubmitReviewContainer />
           </div>
         );
       }
