@@ -4,10 +4,14 @@ import '/client/scss/detailedReviewPopUp.scss'
 const ReviewPopUp = (props) => {
    
    return (
-  <div class = "talkbubble">
-    <p class = "talkbubbleText">Review {"Filler Review"}</p>
+
+  <div className = "talkbubble">
+    <p className = "talkbubbleText">{"Filler Review"}</p>
    </div>
+
+
     )
+
    }
  
 
