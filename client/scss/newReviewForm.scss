@@ -1,0 +1,76 @@
+//@import 'colors';
+
+.myForm {
+    width: 435px;
+    background-color: burlywood;
+    display: grid;
+    grid-template-columns: 220px 220px;
+    grid-template-rows: auto;
+    position: relative;
+
+    
+}
+
+
+#submitReview {
+  border: 1px solid transparent;
+  padding: 12px 18px;
+  background-color: #acef9b;
+  border-radius: 5px;
+  color: #3e3e3e;
+  font-weight: 200;
+  font-size: 17px;
+  grid: 0 2;
+  position: absolute;
+  right: 145px;
+  top: 148px;
+}
+#submitReview:hover {
+  border: 1px solid rgb(56, 56, 56);
+  box-shadow: 0 1.5px 1.5px 1px rgba(189, 189, 189, 0.5);
+  cursor: pointer;
+}
+.newReviewTextArea {
+    width: 215px;
+    background-color: rgb(225, 225, 225);
+    border: 1px solid #4fa4ff;
+    border-radius: 4px;
+    display: inline-block;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+}
+.newReviewTextArea:hover {
+    box-shadow: 0 2px 6px 1px #b6aeae;
+    border: 2px solid #4fa4ff;
+}
+
+  .newReviewInput {
+    width: 215px;
+    background-color: rgb(225, 225, 225);
+    border: 1px solid #4fa4ff;
+    border-radius: 4px;
+    display: inline-block;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+}
+.newReviewInput:hover {
+    box-shadow: 0 2px 6px 1px #b6aeae;
+    border: 2px solid #4fa4ff;
+}
+.newReviewInput:focus {
+    outline: none;
+}
+#album {
+    margin: 5px 0px;
+}
+#genre {
+    margin: 5px 0px;
+}
