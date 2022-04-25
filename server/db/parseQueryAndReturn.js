@@ -1,8 +1,6 @@
 const query = require('./query');
 
-
-
- // params should be an object like:
+  // params should be an object like:
   //   {
   //     columnName1: value1,
   //     colName2: val2,
