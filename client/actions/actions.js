@@ -30,6 +30,7 @@ export const queryData = queryResults => ({
           console.log("url", fetchURL);
            const result = await fetch(fetchURL)
            const data =  await result.json()
+           console.log("actions data ", data)
            dispatch(queryData([data]))
         }
        fetchReviews(params)

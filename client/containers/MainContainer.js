@@ -15,6 +15,8 @@
  import * as actions from '../actions/actions.js';
  import AllReviews from '/client/containers/AllReviewsContainer.js'
 import SubmitReviewContainer from "./submitReviewContainer.js";
+//import usersDashboard from '../client/components/usersDashboard.js';
+import '../scss/MainContainer.scss';
  
 const mapStateToProps = state => ({
     reviews : state.review.queriedReviews
@@ -32,12 +34,22 @@ class MainContainer extends Component {
     render() {
         return(
           <div>
+             <nav>
              <SearchBar
-             queryReviews = {this.props.queryReviews}
-             state = {this.props.reviews}
-             ></SearchBar>
+                        queryReviews = {this.props.queryReviews}
+                        state = {this.props.reviews}
+            ></SearchBar>
+            </nav>
+            <div id="main">
+                {/* <usersDashboard /> */}
+                <div className = "showReviews">
              <AllReviews></AllReviews>
+             </div>
              <SubmitReviewContainer />
+            </div>
+
+
+
           </div>
         );
       }
