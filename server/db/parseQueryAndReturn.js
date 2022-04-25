@@ -1,6 +1,6 @@
 const query = require('./query');
 
-  // params should be an object like:
+  // for insert, params should be an object like:
   //   {
   //     columnName1: value1,
   //     colName2: val2,
@@ -17,7 +17,10 @@ function parseQueryAndReturn(operation, tableName, paramsObj) {
     }
   };
   
-
+  // for select, params should be an object with one entry for conditional mapping:
+  //   {
+  //     name: nameToMatch,
+  //   }
   selectQuery = () => {
     return query.select(tableName, paramsObj);
   }

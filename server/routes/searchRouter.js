@@ -3,7 +3,7 @@ const searchController = require('../controllers/searchController');
 const searchRouter = express.Router();
 
 searchRouter.get(
-  '/track/:trackname',
+  '/ratings/:trackName',
   searchController.getTrackReviews,
   (req, res) => {
     return res.status(200).json(res.locals.trackReviews);
