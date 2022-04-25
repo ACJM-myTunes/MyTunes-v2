@@ -17,11 +17,13 @@
  
  // combine reducers
  const reducers = combineReducers({
-   // if we had other reducers, they would go here
-   review: ReviewReducer
- });
- 
- 
- // make the combined reducers available for import
- export default reducers;
+  // if we had other reducers, they would go here
+  review: ReviewReducer,
+  user: userReducer
+
+});
+
+
+// make the combined reducers available for import
+export default reducers;
 
