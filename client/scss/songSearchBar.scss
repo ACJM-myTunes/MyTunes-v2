@@ -1,6 +1,6 @@
 select {
     background-color: white;
-    border: thin solid #4fa4ff;
+    border: thin solid #ACCBE1;
     border-radius: 4px;
     display: inline-block;
     font: inherit;
@@ -12,20 +12,21 @@ select {
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
+    margin-right: 3px;
 }
 select:focus {
     box-shadow: 0 2px 6px 1px #b6aeae;
-    border: 2px solid #4fa4ff;
+    border: 2px solid #00635D;
 }
 select:hover {
     //box-shadow: 0 2px 6px 1px #b6aeae;
-    border: 2px solid #4fa4ff;
+    border: 2px solid #00635D;
 }
 select.classic {
     background-image:
-      linear-gradient(45deg, transparent 50%, blue 50%),
-      linear-gradient(135deg, blue 50%, transparent 50%),
-      linear-gradient(to right, #cee6ff, #cee6ff);
+      linear-gradient(45deg, transparent 50%, #ACCBE1 50%),
+      linear-gradient(135deg, #ACCBE1 50%, transparent 50%),
+      linear-gradient(to right, #ACCBE1, #ACCBE1);
     background-position:
       calc(100% - 20px) calc(1em + 2px),
       calc(100% - 15px) calc(1em + 2px),
@@ -38,8 +39,10 @@ select.classic {
 }
 input {
     width: 215px;
+    height: 42px;
     background-color: white;
-    border: 1px solid #4fa4ff;
+    margin-right: 3px;
+    border: 1px solid #ACCBE1;
     border-radius: 4px;
     display: inline-block;
     line-height: 1.5em;
@@ -51,7 +54,7 @@ input {
 }
 input:hover {
     box-shadow: 0 2px 6px 1px #b6aeae;
-    border: 2px solid #4fa4ff;
+    border: 2px solid #C4B4AB;
 }
 input:focus {
     outline: none;
@@ -59,7 +62,7 @@ input:focus {
 #songSearchButton {
     border: 1px solid transparent;
     padding: 12px 18px;
-    background-color: #cee6ff;
+    background-color: #ACCBE1;
     border-radius: 5px;
     color: #3e3e3e;
     font-weight: 400;

@@ -8,7 +8,9 @@
 
      let display
       if(props.reviewinfo.showDetails) {
-         display = [<DetailedReview></DetailedReview>]
+         display = [<DetailedReview
+          review = {props.reviewinfo.review}
+                    ></DetailedReview>]
       } else {
          display = [<div></div>]
       }
