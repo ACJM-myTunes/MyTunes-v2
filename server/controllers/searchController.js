@@ -10,26 +10,26 @@ const searchController = {
     const relativeURL = req.url; // "search/<menuSelection>/:queryField"
 
     // get indices of the slashes
-    const secondSlashIndex = relativeURL.slice(1).indexOf('/');
+    // const secondSlashIndex = relativeURL.slice(1).indexOf('/');
 
-    // slice/splice out the characters between the slashes as a string,
-    const menuSelection = relativeURL.slice(1, secondSlashIndex + 1);
-
+    // // slice/splice out the characters between the slashes as a string,
+    // const menuSelection = relativeURL.slice(1, secondSlashIndex + 1);
+    const menuSelection = req.params.menuSelection;
+    const userName = req.params.userName;
+    console.log(menuSelection, userName);
     // save the menu selection into res.locals
     res.locals.menuSelection = menuSelection;
-
+    res.locals.userName = userName;
     return next();
   },
 
   getTracks: (req, res, next) => {
     // get the category/menuselection saved in res.locals from searchRouter
     const menuSelection = res.locals.menuSelection;
-    console.log('menuSelect from res local', menuSelection);
 
     // get the queryField from the request params
     // had to slice off a ':' from the beginning of query field
-    const queryField = req.params.queryField.slice(1);
-    console.log('your query field:', queryField);
+    const queryField = req.params.queryField;
 
     // query the database to get all the tracks that match the queryField
     const tableName = menuSelection === 'ratings' ? 'reviews' : menuSelection;
@@ -51,11 +51,11 @@ const searchController = {
 
   getTrackReviews: (req, res, next) => {
     // track name is in request parameters
-    const trackName = req.params.trackName.slice(1);
+    const trackName = req.params.trackName;
 
     // query database to find the track
     const track = parseQueryAndReturn('SELECT', 'tracks', { name: trackName });
-    console.log(`track being reviews: ${track}, id: ${track._id}`)
+    // console.log(`track being reviewed: ${track}, id: ${track._id}`)
 
     // query database for all reviews keyed to trackID
     const trackReviews = parseQueryAndReturn('SELECT', 'reviews', {
@@ -64,6 +64,7 @@ const searchController = {
 
     // store track reviews in res.locals to send to client
     res.locals.trackReviews = trackReviews;
+    return next();
   },
 };
 

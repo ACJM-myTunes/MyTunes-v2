@@ -73,7 +73,7 @@ const userController = {
 
   updateUser: (req, res, next) => {
     // username to be updated with be in the request parameters
-    const username = req.params.username.slice(1);
+    const username = req.params.username;
 
     // information to update included in the request body
     const newUserInfo = req.body;
@@ -100,7 +100,24 @@ const userController = {
 
     // store the tracklist in res.locals
     res.locals.userTracks = userTracks;
+    return next();
   },
+
+  addTrack: (req, res, next) => {
+    const username = req.params.username;
+    const { name, album, artist, genre, rating, review } = req.body;
+    const newTrack = parseQueryAndReturn('INSERT', 'tracks', {
+      username: username,
+      name,
+      album,
+      artist,
+      genre,
+      rating,
+      review
+    })
+    res.locals.newTrack = newTrack;
+    return next();
+  }
 };
 
 module.exports = userController;
