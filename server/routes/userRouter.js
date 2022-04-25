@@ -34,6 +34,14 @@ userRouter.post(
   }
 );
 
+userRouter.post(
+  '/addTrack/:username',
+  userController.addTrack,
+  (req, res) => {
+    return res.status(200).json(res.locals.newTrack);
+  }
+)
+
 /**
  * Load a user dashboard (READ)
  */

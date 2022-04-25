@@ -11,7 +11,7 @@ searchRouter.get(
 );
 
 searchRouter.get(
-  '/*/:queryField',
+  '/:username&:menuSelection&:queryField',
   searchController.getMenuSelection,
   searchController.getTracks,
   (req, res) => {
