@@ -18,7 +18,7 @@ const Login = (props) => {
   // };
 
   const handleClick = (e) => {
-      // e.preventDefault();
+      e.preventDefault();
       // send username and password as a body in post request to server, for server to authenticate
       // if catch err, setError(err);
       console.log('at handleClick');
@@ -39,7 +39,7 @@ const Login = (props) => {
         <div><label>Password: </label></div>
         <div><input value={password} onChange={(e) => setPassword(e.target.value)}></input></div>
       </div>
-      {/* { noInput && <div id="required">Please enter a valid input for all required fields!</div>} */}
+      {/* { noInput && <div id="required">{error}</div>} */}
       <div id="auth"> {/*row 4*/}
         <div><button id="authButton" onClick={handleClick}>Login</button></div>
         <div style={{'alignSelf': 'center'}}><Link to='/signup' id="link">Sign up?</Link></div>

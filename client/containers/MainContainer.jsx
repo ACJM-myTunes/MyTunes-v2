@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Navigation from '../components/Navigation.jsx';
 
 // would be our "homepage"
 // would need access to "user"
 class MainContainer extends Component {
   constructor(props) {
     super(props);
-    // some state changes may need to happen in App.jsx, such as user reviews 
+    // some state changes may need to happen in App.jsx?  
     this.state = {
       userID: ''
       // user reviews
