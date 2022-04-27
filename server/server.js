@@ -6,6 +6,7 @@ const port = 3000;
 // import routers
 const searchRouter = require('./routes/searchRouter');
 const userRouter = require('./routes/userRouter');
+const spotifyRouter = require('./routes/spotifyRouter');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -16,7 +17,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 // server routing
 app.use('/search', searchRouter);
 app.use('/user', userRouter);
-
+app.use('/api/auth/spotify', spotifyRouter);
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('Sorry, this page does not exist.'));
 

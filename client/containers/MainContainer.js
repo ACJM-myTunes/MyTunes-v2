@@ -10,22 +10,24 @@
  */
 
 import React, { Component } from 'react';
-import SearchBar from '/client/components/songSearchBar.js';
-import { connect } from 'react-redux';
-import * as actions from '../actions/actions.js';
-import AllReviews from '/client/containers/AllReviewsContainer.js';
-import SubmitReviewContainer from './submitReviewContainer.js';
+// import SearchBar from '/client/components/songSearchBar.js';
+// import { connect } from 'react-redux';
+// import * as actions from '../actions/actions.js';
+// import AllReviews from '/client/containers/AllReviewsContainer.js';
+// import SubmitReviewContainer from './submitReviewContainer.js';
+
+import { loginUrl } from '../utils/spotify';
 //import usersDashboard from '../client/components/usersDashboard.js';
-import '../scss/MainContainer.scss';
+// import '../scss/MainContainer.scss';
 
-const mapStateToProps = (state) => ({
-  reviews: state.review.queriedReviews,
-});
+// const mapStateToProps = (state) => ({
+//   reviews: state.review.queriedReviews,
+// });
 
-const mapDispatchToProps = (dispatch) => ({
-  queryReviews: (params) =>
-    dispatch(actions.queryReviewsActionDispatch(params)),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   queryReviews: (params) =>
+//     dispatch(actions.queryReviewsActionDispatch(params)),
+// });
 
 class MainContainer extends Component {
   constructor(props) {
@@ -35,21 +37,20 @@ class MainContainer extends Component {
     return (
       <div>
         <nav>
-          <SearchBar
+          {/* <SearchBar
             queryReviews={this.props.queryReviews}
             state={this.props.reviews}
-          ></SearchBar>
+          ></SearchBar> */}
         </nav>
-        <div id='main'>
-          {/* <usersDashboard /> */}
+        {/* <div id='main'>
           <div className='showReviews'>
             <AllReviews></AllReviews>
           </div>
           <SubmitReviewContainer />
-        </div>
+        </div> */}
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
+export default MainContainer;
