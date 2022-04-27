@@ -4,7 +4,7 @@ const parseQueryAndReturn = require('../db/parseQueryAndReturn');
 const userController = {
   createUser: (req, res, next) => {
     // body should contain username, password, name, email,
-    const { username, password, name, email } = req.body;
+    const { username, password } = req.body;
 
     // if any of the fields are not filled out, return a specific error
     if (!username) {
@@ -19,22 +19,12 @@ const userController = {
         message: { err: 'Please enter a valid password.' },
       });
     }
-    if (!name) {
-      return next({
-        log: 'Invalid name field in userController.createUser',
-        message: { err: 'Please enter a valid name.' },
-      });
-    }
-    if (!email) {
-      return next({
-        log: 'Invalid email field in userController.createUser',
-        message: { err: 'Please enter a valid email.' },
-      });
-    }
 
-    const newUserInfo = { username, password, name, email };
+    const newUserInfo = { username, password };
     // create student in the database w/ destructured properties
-    const newUser = parseQueryAndReturn('INSERT', 'users', newUserInfo);
+    const newUser = `INSERT INTO users (username, password) VALUES ($1, $2)`;
+
+    parseQueryAndReturn('INSERT', 'users', newUserInfo);
 
     // store new user in res.locals to serve back to client
     res.locals.newUser = newUser;

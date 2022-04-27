@@ -16,12 +16,6 @@
   "keywords": [],
   "author": "Anu Sharma, Marshall Kim, Jessica Lee, Corey Morrison",
   "license": "ISC",
-  "nodemonConfig": {
-    "ignore": [
-      "public",
-      "client"
-    ]
-  },
   "homepage": "",
   "dependencies": {
     "@babel/core": "^7.17.9",

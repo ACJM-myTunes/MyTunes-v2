@@ -4,8 +4,8 @@ require('dotenv').config();
 
 const router = express.Router();
 const credentials = {
-  clientId: process.env.SPOTIFY_CLIENT_ID,
-  clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+  clientId: '92edc0bb3af34697b651f0e9efe49c5d',
+  clientSecret: 'ba3333c288944788b2622b2c326151dd',
   redirectUri: 'http://localhost:8080/',
 };
 
@@ -22,10 +22,19 @@ router.post('/', (req, res) => {
     .then((data) => {
       // Returning the User's AccessToken in the json formate
       console.log('body', data.body);
+      spotifyApi.setAccessToken(data.body.access_token);
+    })
+    .then(() => spotifyApi.getMe())
+    .then((user) => {
+      res.locals.user = user.body;
+      console.log(res.locals.user);
+    })
+    .then(() => {
       res.status(200).json({
-        accessToken: data.body.access_token,
+        accessToken: spotifyApi.getAccessToken(),
       });
     })
+
     .catch((err) => {
       console.log('err', err);
       res.sendStatus(400);
