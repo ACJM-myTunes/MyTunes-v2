@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+// import { Link, Navigate } from 'react-router-dom';
 import { loginUrl } from '../utils/spotify';
 import { Form, Input, Button, Checkbox } from 'antd';
-import logo from '../assets/mytunes-logo.png';
+// import logo from '../assets/mytunes-logo.png';
+// import '../scss/application.scss';
 
 const Login = (props) => {
 
@@ -23,13 +24,13 @@ const Login = (props) => {
       // send username and password as a body in post request to server, for server to authenticate
       // if catch err, setError(err);
       console.log('at handleClick');
-      return <Navigate to='/home' />;
+      // return <Navigate to='/home' />;
   }
 
   return (
-    <div>
+    <>
       <Form
-    className="userAuth"
+    // className="userAuth"
     name="basic"
     labelCol={{
       span: 8,
@@ -55,7 +56,7 @@ const Login = (props) => {
         },
       ]}
     >
-      <Input.Username />
+      <Input />
     </Form.Item>
 
     <Form.Item
@@ -94,12 +95,18 @@ const Login = (props) => {
       </Button>
     </Form.Item>
   </Form>
+  <div>
   <img
         src='https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg'
         alt='Spotify-Logo'
       />
       <a href={loginUrl}>LOGIN WITH SPOTIFY</a>
   </div>
+  </>
+  );
+};
+
+export default Login;
     // <>
     // <div className="authForm">
     //   <div id="logo"><img src={logo} className='logo-img'></img></div> {/*row 1*/}
@@ -127,8 +134,3 @@ const Login = (props) => {
     //   </div>
     // </div>
     // </>
-
-    );
-};
-
-export default Login;

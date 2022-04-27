@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import Login from './containers/Login.jsx';
 import Dashboard from './components/Dashboard';
+import MainContainer from './containers/MainContainer.jsx';
 
 const App = () => {
   let code = new URLSearchParams(window.location.search).get('code');
@@ -11,7 +12,8 @@ const App = () => {
   console.log('CODE:', code);
   return(
     <div>
-      {code ? <Dashboard code={code} /> : <Login />}
+      {/* {code ? <Dashboard code={code} /> : <Login />} */}
+      <MainContainer />
     </div>
   );
 }
