@@ -1,0 +1,122 @@
+@import 'antd/dist/antd.css';
+
+.html {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.logo-img {
+    justify-self: center;
+    max-height: 100px;
+    max-width: 300px;
+}
+
+#logo {
+    padding-top: 50px;
+}
+
+.authForm {
+    display: grid; 
+    grid-template-rows: 150px;
+    grid-gap: 10px;
+    // font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    justify-content: center;
+    place-items: center;
+}
+
+label {
+    cursor: text;
+}
+
+input {
+    transition: 0.4s;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+input:hover { 
+    border: 1px solid #A3E1F0;
+    border-radius: 3px;
+}
+
+input:focus { 
+    outline: none !important; 
+    border: 1px solid #4EAEC5;
+    border-radius: 3px;
+}
+
+#username, #password {
+    display: grid;
+    grid-template-columns: 10px 100px 190px;
+    max-height: 100px;
+    text-align: left;
+    justify-content: center;
+}
+
+#required {
+    font-size: 10px;
+    color: red;
+    padding-bottom: 8px;
+}
+
+#auth {
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 50px 100px;
+    margin-top: 15px;
+    padding-left: 150px;
+    grid-gap: 50px;
+}
+
+#authButton {
+    color: white;
+    font-size: 14px;
+    background-color: #4EAEC5;
+    transition: 0.3s;
+    border: none;
+    border-radius: 8px;
+    height: 35px;
+    width: 75px;
+}
+
+#authButton:hover {
+    background-color: #A3E1F0;
+    cursor: pointer;
+}
+
+#link {
+    font-size: 14px;
+    color: #4EAEC5;
+    transition: 0.3s;
+    text-decoration: underline;
+}
+
+#link:hover {
+    color: #A3E1F0;
+    cursor: pointer;
+}
+
+// .ant-form {
+//     font-family: 'Segoe UI', sans-serif;
+//     display: grid;
+//     grid-template-rows: auto, 500px; 
+// }
+
+// .ant-form-item:focus {
+//     border-color: mediumpurple;
+// }
+
+// .ant-checkbox-checked .ant-checkbox-inner {
+//     background-color: mediumpurple;
+//     border-color: white;
+// }
+
+// .ant-input:focus {
+//     border-color: mediumpurple;
+//     box-shadow: plum;
+// }
+
+// .ant-btn-primary {
+//     background-color: mediumpurple;
+//     border-color: white;
+// }

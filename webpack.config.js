@@ -13,6 +13,7 @@ module.exports = {
       directory: path.resolve(__dirname, 'public'),
       publicPath: '/',
     },
+    historyApiFallback: true,
     port: 8080,
     compress: true,
     proxy: {
