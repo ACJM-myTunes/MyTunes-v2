@@ -13,7 +13,7 @@
  import { render } from 'react-dom';
  import { Provider } from 'react-redux';
  import App from '/client/App'
- import store from './store'
+ import store from './store' // cam de;et
 
  render(
    <Provider store = {store}>
@@ -22,4 +22,6 @@
      </Provider>, 
    document.getElementById('root')
  );
+
+ // render(<App />, document.getElementById('root'));
 
