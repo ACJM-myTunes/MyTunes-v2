@@ -6,10 +6,11 @@ import Navigation from './Navigation.jsx';
 import Search from '../components/Search.jsx';
 import Songs from '../components/Songs.jsx';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { loginUrl } from '../utils/spotify';
 
 // TEST DATA: 
-const db = require('./db.js');
-const items = require('./items.js');
+// const db = require('./db.js');
+// const items = require('./items.js');
 
 class MainContainer extends Component {
   constructor(props) {
@@ -108,22 +109,8 @@ class MainContainer extends Component {
 
     return (
       <>
-<<<<<<< HEAD
-      <div>
-        {/* <Navigation 
-          linkToHome={this.linkToHome}
-          linkToMyReviews={this.linkToMyReviews}
-          handleSeeReviews={this.handleSeeReviews} 
-          currSongReviews={this.state.currSongReviews}
-        /> */}
-        <Search handleSeeReviews={this.handleSeeReviews} currSongReviews={this.state.currSongReviews} />
-        <a href={loginUrl}>LOGIN WITH SPOTIFY</a>
-        Hi
-        {/* {this.state.seeReviews && <Reviews /> ||
-        <Playlists />} */}
-        <Playlists />
-=======
-      <div>   
+      <div> 
+      <a href={loginUrl}>LOGIN WITH SPOTIFY</a>   
         <Router>
           <Navigation 
             handleSeeReviews={this.handleSeeReviews} 
@@ -144,9 +131,7 @@ class MainContainer extends Component {
                                                   searchError={this.state.searchError}
                                                 />}/>
           </Routes>
-        </Router>    
-        {/* <Playlists /> */} 
->>>>>>> 2dcd3b69c9481661479dd1a2b5e8a7e3f65bccd6
+        </Router>
       </div>
       </>
     );

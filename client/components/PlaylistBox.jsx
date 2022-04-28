@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,21 +8,39 @@ import Typography from '@mui/material/Typography';
 import PlaylistSongs from './PlaylistSongs';
 
 export default function PlaylistBox(props) {
+  // const [songs, setSongs] = useState([]);
+
+  // useEffect(() => {
+  //   fetch(`/api/playlists/${props.id}`)
+  //     .then(res => {
+  //       console.log('reached res.json');
+  //       return res.json()
+  //     })
+  //     .then(songList => {
+  //       console.log('songList:', songList); // empty array
+  //       setSongs(songList)
+  //       console.log('data in state:', songs);
+  //     })
+  //     .catch(err => console.log('songlist, useEffect: get jobs: ERROR: ', err));
+  // }, [])
+
+  // const songArtist = () => data.map(s => {return (<PlaylistSongs playlist={props.name}/>)})
+
   return (
     <Card sx={{ maxWidth: 200 }}>
       <CardMedia
         component="img"
         height="200"
-        image="https://mosaic.scdn.co/300/ab67616d0000b27362c1f3370811c52ae2d26d24ab67616d0000b273798826876c8847fd51bea297ab67616d0000b273b658276cd9884ef6fae69033ab67616d0000b273fd220b07117400ccbc85ed96"
+        image={props.imgURL}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Reading
+          {props.name}
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <Button size="small">View this Playlist</Button> */}
-        <PlaylistSongs/>
+        <PlaylistSongs playlist={props.name} pid={props.id}/>
+        {/* {songArtist} */}
       </CardActions>
     </Card>
   );
