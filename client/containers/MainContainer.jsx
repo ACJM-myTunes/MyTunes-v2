@@ -5,12 +5,21 @@ import MyReviews from './MyReviews.jsx';
 import Navigation from './Navigation.jsx';
 import Search from '../components/Search.jsx';
 import Songs from '../components/Songs.jsx';
+<<<<<<< HEAD
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { loginUrl } from '../utils/spotify';
+
+// TEST DATA: 
+// const db = require('./db.js');
+// const items = require('./items.js');
+=======
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { loginUrl } from '../utils/spotify';
 
 // TEST DATA:
 const db = require('./db.js');
 const items = require('./items.js');
+>>>>>>> bea6fb8ac550e7876470965e0edb509547932e8b
 
 class MainContainer extends Component {
   constructor(props) {
@@ -112,6 +121,32 @@ class MainContainer extends Component {
 
     return (
       <>
+<<<<<<< HEAD
+      <div> 
+      <a href={loginUrl}>LOGIN WITH SPOTIFY</a>   
+        <Router>
+          <Navigation 
+            handleSeeReviews={this.handleSeeReviews} 
+            currSongReviews={this.state.currSongReviews} 
+            handleSearch={this.handleSearch}
+          /> 
+          <Routes>
+            <Route exact path='/' element={<Playlists />}/>
+            <Route exact path='/myreviews' element={<MyReviews />}/>
+            <Route exact path='/song/reviews' element={<Reviews 
+                                                      currTrack={this.state.currTrack}
+                                                      currArtists={this.state.currArtists}
+                                                      currTrackReviews={this.state.currTrackReviews}
+                                                      noReviews={this.state.noReviews}
+                                                      />}/>
+            <Route exact path='/search' element={<Search  
+                                                  songsArray={songsArray}
+                                                  searchError={this.state.searchError}
+                                                />}/>
+          </Routes>
+        </Router>
+      </div>
+=======
         <div>
           {/* <a href={loginUrl}>LOGIN WITH SPOTIFY</a> */}
 
@@ -150,6 +185,7 @@ class MainContainer extends Component {
           </Router>
           {/* <Playlists /> */}
         </div>
+>>>>>>> bea6fb8ac550e7876470965e0edb509547932e8b
       </>
     );
   }

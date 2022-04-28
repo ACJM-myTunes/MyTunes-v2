@@ -2,32 +2,28 @@ import React, { useState, useEffect } from 'react';
 import PlaylistBox from './PlaylistBox.jsx';
 
 const Playlists = (props) => {
-//   const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-//   useEffect(() => {
-//     fetch("/api/playlists")
-//       .then(res => {
-//         console.log('reached res.json');
-//         res.json()
-//       })
-//       .then(res => setData(res))
-//       .catch(err => console.log('Playlist, componentDidMount: get jobs: ERROR: ', err));
-//   }, [])
+  useEffect(() => {
+    fetch("/api/playlists")
+      .then(res => {
+        // console.log('reached res.json');
+        return res.json()
+      })
+      .then(playlist => {
+        // console.log('data:', playlist); 
+        setData(playlist)
+        // console.log('data in state:', data);
+      })
+      .catch(err => console.log('Playlist, useEffect: get jobs: ERROR: ', err));
+  }, [])
 
-// const playlist = [];
-
-// for (let i = 0; i < data.length; i++) {
-//   // access data[i].id // save playlist id to make second fetch request later
-//   // access data[i].name // name of playlist
-//   // access data[i].images[0].url // link to image for playlist
-//   playlist.push(<PlaylistBox key={`Playlist ${i}`} id={data[i].id} name={data[i].name} imgURL={data[i].images[1].url} />)
-// }
-
-  // render {playlist} below
+  const playlist = () => data.map(p => {return (<PlaylistBox key={`Playlist ${p.id}`} id={p.id} name={p.name} imgURL={p?.images[1]?.url} />)})
+  
 
   return (
-    <div>
-      <PlaylistBox />
+    <div className='tracksGrid'>
+      {data.length !==0 && playlist()}
     </div>
   );
 }
