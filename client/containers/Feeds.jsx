@@ -16,11 +16,11 @@ function Feeds() {
     return (
       <Box mt={10}>
         <Typography variant='h6'>
-          It looks like you are not following anyone...
+          It looks like you don't have any feeds...
         </Typography>
         <Button variant='contained' mt={10}>
           <Link to='/follow' style={{ color: 'white' }}>
-            Add people to follow
+            Add more people to follow
           </Link>
         </Button>
       </Box>

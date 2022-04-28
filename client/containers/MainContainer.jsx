@@ -23,8 +23,9 @@ class MainContainer extends Component {
       currTrackID: '',
       currArtists: '',
       currTrackReviews: [],
-      noReviews: null,
-      currReviewTrackID: '',
+      noReviews: null,      
+      currReviewTrack: '',
+      currReviewTrackID: ''
     };
     this.handleSeeReviews = this.handleSeeReviews.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -69,8 +70,8 @@ class MainContainer extends Component {
       });
   }
 
-  submitReview(trackID) {
-    this.setState({ ...this.state, currReviewTrackID: trackID });
+  submitReview(trackID, trackName) {
+    this.setState({ ...this.state, currReviewTrackID: trackID, currReviewTrack: trackName });
   }
 
   render() {
@@ -108,7 +109,7 @@ class MainContainer extends Component {
           <Route
             exact
             path='/addreview'
-            element={<AddReview trackID={this.state.currReviewTrackID} />}
+            element={<AddReview trackID={this.state.currReviewTrackID} trackName={this.state.currReviewTrack} />}
           />
           <Route
             exact

@@ -12,10 +12,6 @@ body {
   background-attachment: fixed;
 }
 
-.addReview {
-  background-color: white;
-}
-
 html,
 button,
 input {
@@ -31,6 +27,7 @@ a,
 a:visited,
 a:active {
   text-decoration: none;
+  color: #378ddd;
 }
 
 a:hover {

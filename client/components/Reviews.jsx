@@ -1,7 +1,8 @@
 import React from 'react';
 import EachReview from './EachReview';
-import Button from '@mui/material/Button';
+import {Button, Container, Typography} from '@mui/material';
 import { Link } from 'react-router-dom';
+
 
 const Reviews = (props) => {
     const reviews = [];
@@ -15,14 +16,14 @@ const Reviews = (props) => {
             />
         )
     }
+ 
 
     return(
-        <>
-        <div>{props.currTrack}</div>
-        <div>{props.currArtists}</div>
+        <Container maxWidth='md'>
         <div>{reviews}</div>
-        <Link to='/addreview'><Button size="small" onClick={ () => props.submitReview(props.currTrackID)}>ADD REVIEW</Button></Link>
-        </>
+       {reviews.length===0 && <Typography variant='h6' sx={{color:'white'}}>Be the first one to review {props.currTrack}</Typography>}
+        <Button variant='contained' sx={{mt: 5}} onClick={ () => props.submitReview(props.currTrackID, props.currTrack)}><Link to='/addreview' style={{color: 'white'}}>ADD REVIEW</Link></Button>
+        </Container>
     )
 }
 
