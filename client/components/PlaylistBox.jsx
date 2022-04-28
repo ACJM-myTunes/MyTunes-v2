@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import PlaylistSongs from './PlaylistSongs';
 
 export default function PlaylistBox(props) {
   return (
@@ -20,7 +21,8 @@ export default function PlaylistBox(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">View this Playlist</Button>
+        {/* <Button size="small">View this Playlist</Button> */}
+        <PlaylistSongs/>
       </CardActions>
     </Card>
   );
