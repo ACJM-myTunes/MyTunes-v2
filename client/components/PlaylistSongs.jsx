@@ -48,7 +48,7 @@ const PlaylistSongs = (props) => {
 
   const playSongs = [];
   for (let i = 0; i < songslist?.length; i++) {
-    playSongs.push(<div>{songslist[i].track.album.name} <Button size="small">Add Review</Button></div>)
+    playSongs.push(<div>{songslist[i].track.name} <Button size="small">Add Review</Button></div>)
   }
 
   return (
