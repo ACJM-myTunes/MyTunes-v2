@@ -5,7 +5,7 @@ import axios from 'axios';
 
 // Setting the spotifyApi, so that we can use it's functions
 const spotifyApi = new SpotifyWebApi({
-  clientId: '0f4f3971dade401ab0dc59783ea4a253',
+  clientId: '92edc0bb3af34697b651f0e9efe49c5d',
 });
 
 const Dashboard = ({ code }) => {
