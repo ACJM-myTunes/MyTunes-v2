@@ -1,44 +1,34 @@
-const spotifyWebApi = require('spotify-web-api-node');
 const express = require('express');
-require('dotenv').config();
+const userController = require('../controllers/userController');
+const db = require('../models');
 
 const router = express.Router();
-const credentials = {
-  clientId: '92edc0bb3af34697b651f0e9efe49c5d',
-  clientSecret: 'ba3333c288944788b2622b2c326151dd',
-  redirectUri: 'http://localhost:8080/',
-};
 
-router.post('/', (req, res) => {
-  //  setup
-  let spotifyApi = new spotifyWebApi(credentials);
+router.get('/', userController.getSpotifyToken, async (req, res, next) => {
+  const username = res.locals.user.email;
+  const password = res.locals.user.id;
+  const newUserInfo = [username, password];
+  //check if user exist in database
+  try {
+    const queryString = `SELECT username FROM users WHERE username=($1)`;
 
-  //  Get the "code" value posted from the client-side and get the user's accessToken from the spotify api
-  const code = req.body.code;
-  console.log('router', code);
-  // Retrieve an access token
-  spotifyApi
-    .authorizationCodeGrant(code)
-    .then((data) => {
-      // Returning the User's AccessToken in the json formate
-      console.log('body', data.body);
-      spotifyApi.setAccessToken(data.body.access_token);
-    })
-    .then(() => spotifyApi.getMe())
-    .then((user) => {
-      res.locals.user = user.body;
-      console.log(res.locals.user);
-    })
-    .then(() => {
-      res.status(200).json({
-        accessToken: spotifyApi.getAccessToken(),
-      });
-    })
-
-    .catch((err) => {
-      console.log('err', err);
-      res.sendStatus(400);
+    const userExists = await db.query(queryString, [username]);
+    if (!userExists) {
+      const newUserQuery = `INSERT INTO users (username, password) VALUES ($1, $2)`;
+      await db.query(newUserQuery, newUserInfo);
+    }
+    res.status(200).json({
+      username,
     });
+  } catch (err) {
+    console.log(err);
+    // res.sendStatus(400);
+    return next(err);
+  }
+
+  // create student in the database w/ destructured properties
+
+  // store new user in res.locals to serve back to client
 });
 
 module.exports = router;

@@ -1,116 +1,84 @@
-const query = require('../db/query');
-const parseQueryAndReturn = require('../db/parseQueryAndReturn');
+const spotifyWebApi = require('spotify-web-api-node');
+require('dotenv').config();
 
+const credentials = {
+  clientId: process.env.SPOTIFY_CLIENT_ID,
+  clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+  redirectUri: 'http://localhost:3000/api/auth/spotify/',
+};
+
+//  setup
+let spotifyApi = new spotifyWebApi(credentials);
 const userController = {
-  createUser: (req, res, next) => {
-    // body should contain username, password, name, email,
-    const { username, password } = req.body;
-
-    // if any of the fields are not filled out, return a specific error
-    if (!username) {
-      return next({
-        log: 'Invalid username field in userController.createUser',
-        message: { err: 'Please enter a valid username.' },
+  getSpotifyToken: (req, res, next) => {
+    const code = req.query.code;
+    console.log('clientId', process.env.SPOTIFY_CLIENT_ID);
+    // Retrieve an access token
+    spotifyApi
+      .authorizationCodeGrant(code)
+      .then((data) => {
+        // Returning the User's AccessToken in the json formate
+        console.log('body', data.body);
+        spotifyApi.setAccessToken(data.body.access_token);
+        spotifyApi.setRefreshToken(data.body.refresh);
+      })
+      .then(() => spotifyApi.getMe())
+      .then((user) => {
+        res.locals.user = user.body;
+        res.cookie('id', res.locals.user.id);
+        res.cookie('username', res.locals.user.email);
+        console.log(res.locals.user);
+        return next();
+        // res.redirect('http://localhost:8080/');
+      })
+      .catch((err) => {
+        return next(err);
       });
-    }
-    if (!password) {
-      return next({
-        log: 'Invalid password field in userController.createUser',
-        message: { err: 'Please enter a valid password.' },
-      });
-    }
-
-    const newUserInfo = { username, password };
-    // create student in the database w/ destructured properties
-    const newUser = `INSERT INTO users (username, password) VALUES ($1, $2)`;
-
-    parseQueryAndReturn('INSERT', 'users', newUserInfo);
-
-    // store new user in res.locals to serve back to client
-    res.locals.newUser = newUser;
-
-    return next();
   },
-
-  verifyUser: (req, res, next) => {
-    // body should contain username, password, - maybe userID as well?
-    const { username, password } = req.body;
-
-    // if any fields are not filled out, return specific error
-    if (!username) {
-      return next({
-        log: 'Invalid username field in userController.verifyUser',
-        message: { err: 'Please enter a valid username.' },
-      });
-    }
-    if (!password) {
-      return next({
-        log: 'Invalid password field in userController.verifyUser',
-        message: { err: 'Please enter a valid password.' },
-      });
-    }
-
-    const loginInfo = { username, password };
-
-    // query DB to see if user and password combo exist
-    const user = parseQueryAndReturn('SELECT', 'users', loginInfo);
-
-    // store returned user object into res.locals
-    res.locals.user = user;
-
-    return next();
+  getUserPlaylists: (req, res, next) => {
+    // const { id } = res.locals.user;
+    // console.log(res.locals.user);
+    console.log(req.cookies.id);
+    const { id, username } = req.cookies;
+    spotifyApi
+      .getUserPlaylists(id)
+      .then((data) => {
+        console.log('getUserPlaylists');
+        res.locals.playlists = data.body;
+        return next();
+      })
+      .catch((err) => next(err));
   },
-
-  updateUser: (req, res, next) => {
-    // username to be updated with be in the request parameters
-    const username = req.params.username;
-
-    // information to update included in the request body
-    const newUserInfo = req.body;
-
-    // query DB to update the user (by their ID)
-    const updatedUser = parseQueryAndReturn('UPDATE', 'users', {
-      ...newUserInfo,
-    });
-
-    // store updated user in res.locals to send back to client
-    res.locals.updatedUser = updatedUser;
-
-    return next();
+  getTracks: (req, res, next) => {
+    const { query } = req.query;
+    console.log(query);
+    spotifyApi
+      .searchTracks(`track: ${query}`)
+      .then(function (data) {
+        console.log('Tracks found: ', data.body);
+        res.locals.tracks = data.body.tracks.items;
+        return next();
+      })
+      .catch((err) => next(err));
   },
-
-  loadUserDashboard: (req, res, next) => {
-    // get the current user from res.locals.user
-    const username = req.params.username;
-    console.log('get request received for', username);
-
-    // query the database to get the user's tracklist
-    const userTracks = parseQueryAndReturn('SELECT', 'userTracks', {
-      username,
-    });
-    console.log('loaded userTracks:', userTracks);
-
-    // store the tracklist in res.locals
-    res.locals.userTracks = userTracks;
-    return next({
-      log: 'error in userController.loadUserDashboard',
-    });
-  },
-
-  addTrack: (req, res, next) => {
-    const username = req.params.username;
-    const { name, album, artist, genre, rating, review } = req.body;
-    const newTrack = parseQueryAndReturn('INSERT', 'tracks', {
-      username: username,
-      name,
-      album,
-      artist,
-      genre,
-      rating,
-      review,
-    });
-    res.locals.newTrack = newTrack;
-    return next();
+  getPlaylistTracks: (req, res, next) => {
+    const { playlistId } = req.params;
+    spotifyApi
+      .getPlaylistTracks(playlistId, {
+        limit: 5,
+        fields: 'items',
+      })
+      .then(
+        function (data) {
+          console.log('The playlist contains these tracks', data.body);
+          res.locals.playlist = data.body;
+          return next();
+        },
+        function (err) {
+          console.log('Something went wrong!', err);
+          return next(err);
+        }
+      );
   },
 };
 
