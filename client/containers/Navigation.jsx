@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/mytunes-logo-mui.png';
 import { Button, AppBar, Container, Toolbar, Box } from '@mui/material';
+import { useCookies } from '@react-smart/react-cookie-service';
+
 
 const Navigation = (props) => {
   const [query, setQuery] = useState();
@@ -13,6 +15,11 @@ const Navigation = (props) => {
       navigate('/search');
     }
   };
+  
+  const handleLogout = () => {
+  //   const {deleteAllCookies} = useCookies();
+  //   deleteAllCookies();
+  }
 
   return (
     <AppBar position='static' sx={{ backgroundColor: 'transparent', mb: 10 }}>
@@ -56,6 +63,9 @@ const Navigation = (props) => {
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
             />
+            <Button size='small' sx={{ mr: 5 }} onClick={handleLogout}>
+                LOGOUT
+              </Button>
           </Box>
         </Toolbar>
       </Container>

@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
 
-const defaultValues = {
-    title: '',
-    rating: 0,
-    review: ''
-};
-
 const AddReview = (props) => {
+const location  = useLocation();
+
+    const defaultValues = {
+        title: props.trackName ? props.trackName : location.state.title,
+        rating: 5,
+        review: ''
+    };
 
     const [formValues, setFormValues] = useState(defaultValues);    
     const [error, setError] = useState(null);
@@ -37,7 +38,7 @@ const AddReview = (props) => {
         }
         else  {
             const reqBody = {
-                trackId: props.trackID,
+                trackId: props.trackID ? props.trackID : location.state.trackID,
                 rating: formValues.rating,
                 review: formValues.review,
                 title: formValues.title
@@ -62,10 +63,10 @@ const AddReview = (props) => {
             <TextField
                 name="title"
                 label="Title"
+                disabled
                 style = {{ width: 400 }}
                 type="text"
                 value={formValues.title}
-                onChange={handleInputChange}
             />
             </Grid>
             <Grid item>
@@ -116,7 +117,7 @@ const AddReview = (props) => {
                 />
             </Grid>
             {error && <div id="error">{error}</div>}
-            <Link to="/myreviews"><Button onClick={handleSubmit} size="medium" type="submit">
+            <Link to="/myreviews"><Button variant='contained' mt={10} onClick={handleSubmit} size="medium" type="submit">
             SUBMIT
             </Button></Link>
         </Grid>

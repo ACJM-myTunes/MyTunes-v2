@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -48,7 +49,8 @@ const PlaylistSongs = (props) => {
 
   const playSongs = [];
   for (let i = 0; i < songslist?.length; i++) {
-    playSongs.push(<div>{songslist[i].track.name} <Button size="small">Add Review</Button></div>)
+    console.log('track', songslist[i].track)
+    playSongs.push(<div>{songslist[i].track.name} <Button size="small"><Link to='/addreview' state={{trackID: songslist[i].track.id, title: songslist[i].track.name}}>Add Review</Link></Button></div>)
   }
 
   return (

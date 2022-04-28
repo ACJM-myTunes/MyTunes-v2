@@ -10,6 +10,10 @@ const App = () => {
   // useEffect(() => {
   //   code = new URLSearchParams(window.location.search).get('code');
   // }, []);
+  // const handleLogout = () => {
+  //   const {deleteAllCookies} = useCookies();
+  //   deleteAllCookies();
+  // }
 
   const { check } = useCookies();
 
