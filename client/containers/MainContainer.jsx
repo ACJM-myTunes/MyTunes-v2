@@ -92,6 +92,7 @@ class MainContainer extends Component {
           currSongReviews={this.state.currSongReviews}
         /> */}
         <Search handleSeeReviews={this.handleSeeReviews} currSongReviews={this.state.currSongReviews} />
+        <a href={loginUrl}>LOGIN WITH SPOTIFY</a>
         Hi
         {/* {this.state.seeReviews && <Reviews /> ||
         <Playlists />} */}
