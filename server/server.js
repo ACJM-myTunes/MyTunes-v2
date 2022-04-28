@@ -10,7 +10,7 @@ const spotifyRouter = require('./routes/spotifyRouter');
 const playlistRouter = require('./routes/playlistRouter');
 const trackRouter = require('./routes/trackRouter');
 const reviewRouter = require('./routes/reviewRouter');
-const followsRouter = require('./routes/followingReviewsRouter');
+const followsRouter = require('./routes/followsRouter');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
