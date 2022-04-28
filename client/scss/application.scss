@@ -65,8 +65,8 @@ input:focus {
 }
 
 #form {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .logo-img {
@@ -75,15 +75,15 @@ input:focus {
 }
 
 .nav {
-    display: grid;
-    grid-template-columns: 7fr 1fr 2fr 1fr;
-    grid-gap: 5px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    align-items: center;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: 7fr 1fr 2fr 1fr;
+  grid-gap: 5px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 #myTunes,
