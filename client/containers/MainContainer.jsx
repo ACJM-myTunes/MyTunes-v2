@@ -6,13 +6,11 @@ import AddReview from './AddReview.jsx';
 import Navigation from './Navigation.jsx';
 import Search from '../components/Search.jsx';
 import Songs from '../components/Songs.jsx';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import { loginUrl } from '../utils/spotify';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 class MainContainer extends Component {
   constructor(props) {
-    super(props); 
+    super(props);
     this.state = {
       userID: '',
       userReviews: [],
@@ -30,9 +28,9 @@ class MainContainer extends Component {
     this.submitReview = this.submitReview.bind(this);
   }
 
-  componentWillMount() {    
-    // to see if we need this later - should we access userid from cookies in this function? 
-      // or componentDidMount() ? 
+  componentWillMount() {
+    // to see if we need this later - should we access userid from cookies in this function?
+    // or componentDidMount() ?
   }
 
   handleSearch(query) {
@@ -72,8 +70,8 @@ class MainContainer extends Component {
     this.setState({...this.state, currReviewTrackID: trackID});
   }
 
-  render() { 
-    // search logic: 
+  render() {
+    // search logic:
     const results = [...this.state.searchResults];
     const songsArray = [];
     for (let i = 0; i < results?.length; i++) { // (i think) the '?' ensures we'll get blank display of songs if there are no songs 
@@ -93,7 +91,6 @@ class MainContainer extends Component {
 
     return (
       <>
-      <a href={loginUrl}>LOGIN WITH SPOTIFY</a>
       <div>   
         <Router>
           <Navigation 
@@ -128,16 +125,16 @@ class MainContainer extends Component {
 export default MainContainer;
 
 // NAVIGATE bar -> link to "home" "my reviews" + search bar
-  // SEARCH bar 
-    // onkeypress "enter" -> SONGS (map/for loop) -> render each SONG in a box 
-      // with "add reviews" button onclick -> modal to ADDREVIEW + if any have x amount of reviews -> button onclick -> route to: REVIEWS
+// SEARCH bar
+// onkeypress "enter" -> SONGS (map/for loop) -> render each SONG in a box
+// with "add reviews" button onclick -> modal to ADDREVIEW + if any have x amount of reviews -> button onclick -> route to: REVIEWS
 // display fetched user PLAYLIST
 
-// hierarchy: 
+// hierarchy:
 // PLAYLIST ('/home')
 // MY REVIEWS ('/myreviews')
 // NAVIGATATION
-  // SEARCH
-    // SONGS
-      // SONG
-        // ADDREVIEW // REVIEWS
+// SEARCH
+// SONGS
+// SONG
+// ADDREVIEW // REVIEWS
