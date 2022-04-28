@@ -13,6 +13,7 @@ module.exports = {
       directory: path.resolve(__dirname, 'public'),
       publicPath: '/',
     },
+    historyApiFallback: true,
     port: 8080,
     compress: true,
     proxy: {
@@ -50,6 +51,10 @@ module.exports = {
         use: {
           loader: 'url-loader',
         },
+      },
+      {
+        test: /\.less$/,
+        use: ["style-loader", {loader: 'css-loader', options: {sourceMap: 1}}, "postcss-loader", "less-loader"]
       },
     ],
   },
