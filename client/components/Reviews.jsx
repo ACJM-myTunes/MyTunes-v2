@@ -1,13 +1,27 @@
 import React from 'react';
+import EachReview from './EachReview';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const Reviews = (props) => {
-    // style this in a grid
-    // button -> 'add review' -> modal review form -> onclick "post" -> invoke function to fetch post request on MainContainer 
+    const reviews = [];
+    for (let i = 0; i < props.currTrackReviews?.length; i++) {
+        reviews.push(
+            <EachReview 
+                key={`Review ${i}`}
+                title={props.currTrackReviews[i].title}
+                rating={props.currTrackReviews[i].rating}
+                review={props.currTrackReviews[i].review}
+            />
+        )
+    }
+
     return(
         <>
         <div>{props.currTrack}</div>
         <div>{props.currArtists}</div>
-        <div>{props.currTrackReviews}</div>
+        <div>{reviews}</div>
+        <Link to='/addreview'><Button size="small" onClick={ () => props.submitReview(props.currTrackID)}>ADD REVIEW</Button></Link>
         </>
     )
 }

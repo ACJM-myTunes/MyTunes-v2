@@ -44,6 +44,11 @@ input:focus {
     border-radius: 3px;
 }
 
+#form {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .logo-img {
     max-height: 100px;
     max-width: 300px;
@@ -53,10 +58,10 @@ input:focus {
     display: grid;
     grid-template-columns: 7fr 1fr 2fr 1fr;
     grid-gap: 5px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     align-items: center;
     justify-content: center;
 }

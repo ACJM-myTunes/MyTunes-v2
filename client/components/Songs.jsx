@@ -23,7 +23,7 @@ const Songs = (props) => {
             <CardMedia
               component="img"
               height="200"
-              image="https://i.scdn.co/image/ab67616d0000b27314bd90935ed5a2ac6c662373" // {props.albumCover}
+              image={props.albumCover}
             />
 
             <CardContent>
@@ -39,7 +39,7 @@ const Songs = (props) => {
             </CardContent>
 
             <CardActions>
-              <Link to='/song/reviews'><Button size="small" onClick={ () => props.handleSeeReviews(props.track, artists_str, props.id)}>REVIEWS</Button></Link>
+              <Link to='/song/reviews'><Button size="small" onClick={ () => props.handleSeeReviews(props.track, artists_str, props.id)}>SEE REVIEWS</Button></Link>
             </CardActions>   
           </Card>    
         </div>
