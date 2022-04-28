@@ -40,16 +40,27 @@ router.post('/', async (req, res, next) => {
   // const queryString = `INSERT INTO follows (username, following) SELECT 'hyojin.jessica.lee@gmail.com', 'corey.neil.morrison@gmail.com' WHERE NOT EXISTS ( SELECT 1 FROM follows WHERE username = 'hyojin.jessica.lee@gmail.com' AND following = 'corey.neil.morrison@gmail.com')`;
   // const queryString = `INSERT INTO follows (username, following) SELECT ($1), ($2) WHERE NOT EXISTS ( SELECT 1 FROM follows WHERE username = ($1) AND following = ($2)`;
   try {
+    const checkUser = `SELECT * FROM users WHERE username = ($1)`;
+    const validUsername = await db.query(checkUser, [following]);
+    if (validUsername.rowCount === 0) {
+      return next({
+        log: 'Error occurred with POST request to follow an user',
+        status: 400,
+        message: { err: 'Invalid username' },
+      });
+    }
     const queryString = `SELECT 1 FROM follows WHERE username = ($1) AND following = ($2)`;
     const isExisting = await db.query(queryString, [username, following]);
     if (isExisting.rowCount > 0) {
       return next({
         log: 'Error occurred with POST request to follow an user',
-        message: 'Already following this user',
+        status: 400,
+        message: { err: 'Already following this user' },
       });
     }
     const queryStringAdd = `INSERT INTO follows (username, following) SELECT ($1), ($2)`;
     await db.query(queryStringAdd, [username, following]);
+    console.log('success!');
     return res.status(200).json(`Success! Following ${following}`);
   } catch (err) {
     (err) => {
