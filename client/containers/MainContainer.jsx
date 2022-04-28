@@ -1,25 +1,13 @@
 import React, { Component } from 'react';
 import Playlists from '../components/Playlists.jsx';
 import Reviews from '../components/Reviews.jsx';
-import MyReviews from './MyReviews.jsx';
+import MyReviews from './MyReviews.jsx'
+import AddReview from './AddReview.jsx';
 import Navigation from './Navigation.jsx';
 import Search from '../components/Search.jsx';
 import Songs from '../components/Songs.jsx';
-<<<<<<< HEAD
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { loginUrl } from '../utils/spotify';
-
-// TEST DATA: 
-// const db = require('./db.js');
-// const items = require('./items.js');
-=======
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { loginUrl } from '../utils/spotify';
-
-// TEST DATA:
-const db = require('./db.js');
-const items = require('./items.js');
->>>>>>> bea6fb8ac550e7876470965e0edb509547932e8b
 
 class MainContainer extends Component {
   constructor(props) {
@@ -30,12 +18,15 @@ class MainContainer extends Component {
       searchResults: [],
       searchError: null,
       currTrack: '',
+      currTrackID: '',
       currArtists: '',
       currTrackReviews: [],
       noReviews: null,
-    };
+      currReviewTrackID: '',
+    }
     this.handleSeeReviews = this.handleSeeReviews.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.submitReview = this.submitReview.bind(this);
   }
 
   componentWillMount() {
@@ -44,86 +35,62 @@ class MainContainer extends Component {
   }
 
   handleSearch(query) {
-    // fetch(`/tracks/${query}`)
-    //   .then(res => {
-    //     if (res.ok) res.json();
-    //     else throw new Error('Unable to gather data...');
-    //   })
-    //   .then(items => {
-    //     if (items.length === 0) {
-    //       this.setState({...this.state, searchError: 'No results found...'});
-    //     }
-    //     this.setState({...this.state, searchResults: items});
-    //   })
-    //   .catch(err => {
-    //     this.setState({...this.state, searchError: `Error: ${err}`});
-    //   })
-
-    // WITH TEST DATA:
-    if (items.length === 0) {
-      this.setState({ ...this.state, searchError: 'No results found...' });
-    }
-    this.setState({ ...this.state, searchResults: items });
+    fetch(`/api/tracks?query=${query}`)
+      .then(res => { 
+        if (res.ok) return res.json();
+        else throw new Error('Unable to gather data...');
+      })
+      .then(items => {
+        this.setState({...this.state, searchResults: items});
+      })
+      .catch(err => {
+        this.setState({...this.state, searchError: `${err}`});
+      })
   }
 
   handleSeeReviews(track, artists, trackID) {
-    // fetch(`/reviews/${trackID}`)
-    //   .then(res => {
-    //     if (res.ok) res.json();
-    //   })
-    //   .then(reviews => {
-    //     if (reviews.length === 0) {
-    //       this.setState({...this.state, noReviews: 'No reviews for this song yet!'});
-    //     }
-    //     this.setState({
-    //       ... this.state,
-    //       currTrack: track,
-    //       currArtists: artists,
-    //       currTrackReviews: reviews,
-    //     })
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   })
+    fetch(`/api/reviews/${trackID}`)
+      .then(res => { 
+        if (res.ok) return res.json();
+      })
+      .then(reviews => {
+        this.setState({
+          ... this.state, 
+          currTrack: track,
+          currTrackID: trackID,
+          currArtists: artists, 
+          currTrackReviews: reviews,
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
-    // WITH TESET DATA:
-    const reviews = db[trackID];
-    this.setState({
-      ...this.state,
-      currTrack: track,
-      currArtists: artists,
-      currTrackReviews: reviews,
-    });
+  submitReview(trackID) {
+    this.setState({...this.state, currReviewTrackID: trackID});
   }
 
   render() {
     // search logic:
     const results = [...this.state.searchResults];
     const songsArray = [];
-    for (let i = 0; i < results?.length; i++) {
-      // (i think) the '?' ensures we'll get blank display of songs if there are no songs
-      console.log(results[i]);
+    for (let i = 0; i < results?.length; i++) { // (i think) the '?' ensures we'll get blank display of songs if there are no songs 
       const allArtists = results[i].artists;
       let artists = [];
-      artists = allArtists.map((artist) => artist.name);
-      songsArray.push(
-        <Songs
-          key={`Song ${i}`}
-          albumCover={results[i].album.images[0]}
+      artists = allArtists.map(artist => artist.name);
+      songsArray.push(<Songs 
+          key={`Song ${i}`} 
+          albumCover={results[i].album.images[0].url}
           albumName={results[i].album.name}
-          id={results[i].id}
-          track={results[i].name}
+          id={results[i].id} 
+          track={results[i].name} 
           artists={artists}
-          handleSeeReviews={this.handleSeeReviews}
-        />
-      );
+          handleSeeReviews={this.handleSeeReviews} 
+      />);
     }
 
     return (
-      <>
-<<<<<<< HEAD
-      <div> 
-      <a href={loginUrl}>LOGIN WITH SPOTIFY</a>   
         <Router>
           <Navigation 
             handleSeeReviews={this.handleSeeReviews} 
@@ -133,8 +100,11 @@ class MainContainer extends Component {
           <Routes>
             <Route exact path='/' element={<Playlists />}/>
             <Route exact path='/myreviews' element={<MyReviews />}/>
+            <Route exact path='/addreview' element={<AddReview trackID={this.state.currReviewTrackID} />}/>
             <Route exact path='/song/reviews' element={<Reviews 
+                                                      submitReview={this.submitReview}
                                                       currTrack={this.state.currTrack}
+                                                      currTrackID={this.state.currTrackID}
                                                       currArtists={this.state.currArtists}
                                                       currTrackReviews={this.state.currTrackReviews}
                                                       noReviews={this.state.noReviews}
@@ -144,49 +114,7 @@ class MainContainer extends Component {
                                                   searchError={this.state.searchError}
                                                 />}/>
           </Routes>
-        </Router>
-      </div>
-=======
-        <div>
-          {/* <a href={loginUrl}>LOGIN WITH SPOTIFY</a> */}
-
-          <Router>
-            <Navigation
-              handleSeeReviews={this.handleSeeReviews}
-              currSongReviews={this.state.currSongReviews}
-              handleSearch={this.handleSearch}
-            />
-            <Routes>
-              <Route exact path='/' element={<Playlists />} />
-              <Route exact path='/myreviews' element={<MyReviews />} />
-              <Route
-                exact
-                path='/song/reviews'
-                element={
-                  <Reviews
-                    currTrack={this.state.currTrack}
-                    currArtists={this.state.currArtists}
-                    currTrackReviews={this.state.currTrackReviews}
-                    noReviews={this.state.noReviews}
-                  />
-                }
-              />
-              <Route
-                exact
-                path='/search'
-                element={
-                  <Search
-                    songsArray={songsArray}
-                    searchError={this.state.searchError}
-                  />
-                }
-              />
-            </Routes>
-          </Router>
-          {/* <Playlists /> */}
-        </div>
->>>>>>> bea6fb8ac550e7876470965e0edb509547932e8b
-      </>
+        <Router />
     );
   }
 }
