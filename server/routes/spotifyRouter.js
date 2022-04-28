@@ -17,9 +17,10 @@ router.get('/', userController.getSpotifyToken, async (req, res, next) => {
       const newUserQuery = `INSERT INTO users (username, password) VALUES ($1, $2)`;
       await db.query(newUserQuery, newUserInfo);
     }
-    res.status(200).json({
-      username,
-    });
+    // res.status(200).json({
+    //   username,
+    // });
+    res.redirect('http://localhost:8080/');
   } catch (err) {
     console.log(err);
     // res.sendStatus(400);
