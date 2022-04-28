@@ -15,7 +15,7 @@ const Navigation = (props) => {
   };
 
   return (
-    <AppBar position='static' sx={{ backgroundColor: 'white', mb: 10 }}>
+    <AppBar position='static' sx={{ backgroundColor: 'transparent', mb: 10 }}>
       <Container maxWidth='xl'>
         <Toolbar
           disableGutters

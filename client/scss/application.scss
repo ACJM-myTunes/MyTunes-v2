@@ -1,10 +1,4 @@
 // @import 'antd/dist/antd.css';
-<<<<<<< HEAD
-// body {
-//   margin: 0;
-//   padding: 0;
-// }
-=======
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 body {
@@ -18,7 +12,6 @@ body {
   background-attachment: fixed;
 }
 
->>>>>>> main
 html,
 button,
 input {
@@ -65,14 +58,11 @@ input:focus {
   outline: none !important;
   border: 1px solid #378ddd;
   border-radius: 3px;
-<<<<<<< HEAD
-=======
 }
 
 #form {
-    padding-top: 20px;
-    padding-bottom: 20px;
->>>>>>> main
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .logo-img {
@@ -81,27 +71,15 @@ input:focus {
 }
 
 .nav {
-<<<<<<< HEAD
   display: grid;
   grid-template-columns: 7fr 1fr 2fr 1fr;
   grid-gap: 5px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   align-items: center;
   justify-content: center;
-=======
-    display: grid;
-    grid-template-columns: 7fr 1fr 2fr 1fr;
-    grid-gap: 5px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    align-items: center;
-    justify-content: center;
->>>>>>> main
 }
 
 #myTunes,
@@ -198,8 +176,6 @@ input:focus {
 //     background-color: mediumpurple;
 //     border-color: white;
 // }
-<<<<<<< HEAD
-=======
 
 .spotBtn {
   background-color: #1ed760;
@@ -214,4 +190,3 @@ input:focus {
   align-items: center;
   justify-content: center;
 }
->>>>>>> main
