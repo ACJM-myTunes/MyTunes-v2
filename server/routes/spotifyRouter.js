@@ -13,7 +13,10 @@ router.get('/', userController.getSpotifyToken, async (req, res, next) => {
     const queryString = `SELECT username FROM users WHERE username=($1)`;
 
     const userExists = await db.query(queryString, [username]);
+<<<<<<< HEAD
     console.log(userExists)
+=======
+>>>>>>> bea6fb8ac550e7876470965e0edb509547932e8b
     if (userExists.rowCount === 0) {
       const newUserQuery = `INSERT INTO users (username, password) VALUES ($1, $2)`;
       await db.query(newUserQuery, newUserInfo);
