@@ -114,7 +114,7 @@ class MainContainer extends Component {
                                                   searchError={this.state.searchError}
                                                 />}/>
           </Routes>
-        <Router />
+        </Router>
     );
   }
 }
