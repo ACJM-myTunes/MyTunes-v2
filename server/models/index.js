@@ -7,6 +7,11 @@ const pool = new Pool({
   connectionString: PG_URI,
 });
 
+pool.connect(function (err) {
+  if (err) throw err;
+  console.log('Connected to PostgresDB');
+});
+
 module.exports = {
   query: (text, params, callback) => {
     console.log('executed query', text);
