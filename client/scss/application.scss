@@ -1,18 +1,88 @@
-@import 'antd/dist/antd.css';
+// @import 'antd/dist/antd.css';
 
-// .html {
-//     font-family: 'Segoe UI', sans-serif;
-// }
+html, button, input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
 
-// .logo-img {
-//     justify-self: center;
-//     max-height: 100px;
-//     max-width: 300px;
-// }
+label {
+    cursor: text;
+}
 
-// #logo {
-//     padding-top: 50px;
-// }
+a, a:visited, a:active {
+    text-decoration: none;
+}
+  
+a:hover {
+    cursor: pointer;
+}  
+
+button {
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input {
+    transition: 0.4s;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+input:hover { 
+    border: 1px solid #77aee2;
+    border-radius: 3px;
+}
+
+input:focus { 
+    outline: none !important; 
+    border: 1px solid #378ddd;
+    border-radius: 3px;
+}
+
+.logo-img {
+    max-height: 100px;
+    max-width: 300px;
+}
+
+.nav {
+    display: grid;
+    grid-template-columns: 7fr 1fr 2fr 1fr;
+    grid-gap: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+#myTunes, #myTunes:visited, #myTunes:active {
+    color: black;
+    font-size: 40px;
+}
+
+#myTunes:hover {
+    color: black;
+}
+
+#error {
+    color: red;
+    font-size: 12px;
+}
+
+.tracksGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, max-content));
+    grid-gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+}
 
 // .authForm {
 //     display: grid; 
@@ -22,27 +92,6 @@
 //     font-size: 16px;
 //     justify-content: center;
 //     place-items: center;
-// }
-
-// label {
-//     cursor: text;
-// }
-
-// input {
-//     transition: 0.4s;
-//     border: 1px solid black;
-//     border-radius: 3px;
-// }
-
-// input:hover { 
-//     border: 1px solid #A3E1F0;
-//     border-radius: 3px;
-// }
-
-// input:focus { 
-//     outline: none !important; 
-//     border: 1px solid #4EAEC5;
-//     border-radius: 3px;
 // }
 
 // #username, #password {
@@ -66,22 +115,6 @@
 //     margin-top: 15px;
 //     padding-left: 150px;
 //     grid-gap: 50px;
-// }
-
-// #authButton {
-//     color: white;
-//     font-size: 14px;
-//     background-color: #4EAEC5;
-//     transition: 0.3s;
-//     border: none;
-//     border-radius: 8px;
-//     height: 35px;
-//     width: 75px;
-// }
-
-// #authButton:hover {
-//     background-color: #A3E1F0;
-//     cursor: pointer;
 // }
 
 // #link {

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 // import { Link, Navigate } from 'react-router-dom';
 import { loginUrl } from '../utils/spotify';
 import { Form, Input, Button, Checkbox } from 'antd';
-// import logo from '../assets/mytunes-logo.png';
-// import '../scss/application.scss';
+import logo from '../assets/mytunes-logo-mui.png';
 
 const Login = (props) => {
 
@@ -29,6 +28,8 @@ const Login = (props) => {
 
   return (
     <>
+    {/* <img src={logo} className="logo-img"></img> */}
+    <div id="login">
       <Form
     // className="userAuth"
     name="basic"
@@ -95,6 +96,7 @@ const Login = (props) => {
       </Button>
     </Form.Item>
   </Form>
+  </div>
   <div>
   <img
         src='https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg'
