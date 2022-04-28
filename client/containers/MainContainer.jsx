@@ -6,7 +6,8 @@ import AddReview from './AddReview.jsx';
 import Navigation from './Navigation.jsx';
 import Search from '../components/Search.jsx';
 import Songs from '../components/Songs.jsx';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { loginUrl } from '../utils/spotify';
 
 class MainContainer extends Component {
   constructor(props) {
@@ -90,8 +91,6 @@ class MainContainer extends Component {
     }
 
     return (
-      <>
-      <div>   
         <Router>
           <Navigation 
             handleSeeReviews={this.handleSeeReviews} 
@@ -115,9 +114,7 @@ class MainContainer extends Component {
                                                   searchError={this.state.searchError}
                                                 />}/>
           </Routes>
-        </Router>    
-      </div>
-      </>
+        <Router />
     );
   }
 }
