@@ -52,7 +52,7 @@ To get a local copy up and running follow these simple steps.
 ```
   npm install
 ```
-3. Create a .env file in the root directory and paste in the following
+3. Create a `.env` file in the root directory and paste in the following
 ``` 
   SPOTIFY_CLIENT_ID='YOUR SPOTIFY CLIENT ID'
   SPOTIFY_CLIENT_SECRET= 'YOUR SPOTIFY CLIENT SECRET'
