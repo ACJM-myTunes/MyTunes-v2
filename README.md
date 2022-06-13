@@ -27,10 +27,10 @@ Note that it is an iteration of [MyTunes1.0](https://github.com/CASM-Codesmith/M
 ![my-Reviews.png](https://i.postimg.cc/43KWNpGM/my-Reviews.png)
 
 ### Follows
-![Follow.png](https://i.postimg.cc/wxDbm5NY/Follow.png)
+![Follow-edited.png](https://i.postimg.cc/90sQLxHV/Follow-edited.png)
 
 ### Feeds
-![Feeds.png](https://i.postimg.cc/XYY2mTzn/Feeds.png)
+![Feeds-edited.png](https://i.postimg.cc/vBqBVYP4/Feeds-edited.png)
 
 
 # Built With
